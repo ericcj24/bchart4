@@ -13,9 +13,9 @@ import android.content.Intent;
 import android.util.Log;
 
 
-public class TickerUpdateService extends IntentService{
+public class TickerUpdateHelper extends IntentService{
 	
-	private static final String TAG = TickerUpdateService.class.getSimpleName();
+	private static final String TAG = TickerUpdateHelper.class.getSimpleName();
 	
 	static final String TPATH = "https://www.bitstamp.net/api/ticker/";
 	static long databaseDate = 0;
@@ -24,7 +24,7 @@ public class TickerUpdateService extends IntentService{
 	   * A constructor is required, and must call the super IntentService(String)
 	   * constructor with a name for the worker thread.
 	   */
-	public TickerUpdateService() {
+	public TickerUpdateHelper() {
 		super("TickerUpdateService");
 	}
 		

@@ -2,7 +2,6 @@ package edu.illinois.jchen93.bitstampwebsockettest;
 
 import java.util.ArrayList;
 
-
 import java.util.List;
 
 import com.androidplot.xy.LineAndPointFormatter;
@@ -11,15 +10,10 @@ import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.LoaderManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -71,15 +65,13 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	@Override
 	public void onResume(){
 		super.onResume();
-		Log.i(TAG, "on resume");
-        	
+		Log.i(TAG, "on resume");     	
 	}
 	
 	@Override
 	public void onPause(){
 		super.onPause();
-		Log.i(TAG, "on pause");
-		
+		Log.i(TAG, "on pause");	
 	}
 	
 	@Override
@@ -87,7 +79,6 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
     	super.onDetach();
     	Log.i(TAG, "on detach");
     }
-
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -128,7 +119,6 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
          * ListView fronting this adapter to re-display
          */ 
 		if(returnCursor!=null){
-			//Log.i(TAG, "fancy sth?");
 			plotOrderBook(returnCursor);
         }      
         //mAdapter.changeCursor(returnCursor);
@@ -189,7 +179,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
         LineAndPointFormatter format2 = new LineAndPointFormatter(
                 Color.YELLOW,                   // line color
                 null,          					 // point color
-                Color.YELLOW, null);                	// fill color
+                Color.YELLOW, null);             // fill color
         
         plot1.getGraphWidget().setPaddingRight(2);
         plot1.addSeries(series1, format1);

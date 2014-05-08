@@ -1,13 +1,10 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
-
 import android.app.Service;
 
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
-
-
 
 public class BWTUpdateService extends Service{
 	static final String TAG = BWTUpdateService.class.getSimpleName();
@@ -25,6 +22,7 @@ public class BWTUpdateService extends Service{
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
 		
+		Log.i(TAG, "starting transaction");
 		th.firstCall();
 		th.secondCall();
 		Log.i(TAG, "starting orderbook");

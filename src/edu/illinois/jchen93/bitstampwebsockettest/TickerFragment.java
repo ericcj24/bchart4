@@ -1,16 +1,11 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.Fragment;
 import android.app.LoaderManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
@@ -23,9 +18,7 @@ import android.widget.ListView;
 public class TickerFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 	
 	private static final String TAG = TickerFragment.class.getSimpleName();
-	
-	private AlarmManager alarmMgr;
-	private int REQUEST_CODE = 103;
+
 	// Identifies a particular Loader being used in this component
     private static final int TICKER_LOADER = 0;
     private SimpleCursorAdapter mAdapter;

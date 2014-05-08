@@ -16,17 +16,12 @@ import com.androidplot.xy.XYSeries;
 
 import android.app.LoaderManager;
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.Fragment;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
-import android.net.Uri;
 import android.os.Bundle;
 
 import android.util.Log;
