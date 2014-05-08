@@ -1,142 +1,184 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
 
-import java.io.IOException;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pusher.client.Pusher;
-import com.pusher.client.channel.Channel;
-import com.pusher.client.channel.SubscriptionEventListener;
-import com.pusher.client.connection.ConnectionEventListener;
-import com.pusher.client.connection.ConnectionState;
-import com.pusher.client.connection.ConnectionStateChange;
-
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.Menu;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class MainActivity extends Activity {
 
+public class MainActivity extends FragmentActivity {
 	private static final String TAG = MainActivity.class.getSimpleName();
 	
-	TextView tView;
+	private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
+
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
+    private String[] mMenuTitles;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Log.i(TAG, "onCreate");
 		
-		tView = (TextView) findViewById(R.id.data);
+		mTitle = mDrawerTitle = getTitle();
+        mMenuTitles = getResources().getStringArray(R.array.drawer_array);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		
-		doSth();
-		
+        // set a custom shadow that overlays the main content when the drawer opens
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        // set up the drawer's list view with items and click listener
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, mMenuTitles));
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        
+        // enable ActionBar app icon to behave as action to toggle nav drawer
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+        
+        // ActionBarDrawerToggle ties together the the proper interactions
+        // between the sliding drawer and the action bar app icon
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
+                R.string.drawer_open,  /* "open drawer" description for accessibility */
+                R.string.drawer_close  /* "close drawer" description for accessibility */
+                ) {
+            public void onDrawerClosed(View view) {
+                getActionBar().setTitle(mTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                getActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        if (savedInstanceState == null) {
+            selectItem(0);
+        }
+
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-		
-	private void doSth() {
-		
-		// Create a new Pusher instance
-		Pusher pusher = new Pusher("de504dc5763aeef9ff52");
 
-		pusher.connect(new ConnectionEventListener() {
-		    @Override
-		    public void onConnectionStateChange(ConnectionStateChange change) {
-		        Log.i(TAG, "State changed to " + change.getCurrentState() +
-		                           " from " + change.getPreviousState());
-		    }
+    /* The click listener for ListView in the navigation drawer */
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
 
-		    @Override
-		    public void onError(String message, String code, Exception e) {
-		        Log.i(TAG, "There was a problem connecting!");
-		    }
-		}, ConnectionState.ALL);
+        }
+    }
 
-		// Subscribe to a channel
-		Channel channel = pusher.subscribe("live_trades");
-		
-		// Bind to listen for events called "my-event" sent to "my-channel"
-		channel.bind("trade", new SubscriptionEventListener() {
-		    @Override
-		    public void onEvent(String channel, String event, String data) {
-		        Log.i(TAG, "Received event with data: " + data);
-                log(data);
-		    }
-		    
-		 // Logging helper method
-			private void log(String msg) {
-				LogTask task = new LogTask(tView, msg);
-				task.execute();
-			}
-		    
-		});
+    private void selectItem(int position) {
+        /**
+    	// update the main content by replacing fragments
+        Fragment fragment = new ChartFragment();
+        Bundle args = new Bundle();
+        args.putInt(ChartFragment.ARG_CHART_NUMBER, position);
+        fragment.setArguments(args);
 
-		// Disconnect from the service (or become disconnected my network conditions)
-		pusher.disconnect();
-
-		// Reconnect, with all channel subscriptions and event bindings automatically recreated
-		pusher.connect();
-		// The state change listener is notified when the connection has been re-established,
-		// the subscription to "my-channel" and binding on "my-event" still exist.
-		
-	}
-		
-
-	class LogTask extends AsyncTask<Void, Void, Void> {
-
-		TextView view;
-		String msg;
-
-		public LogTask(TextView view, String msg) {
-			this.view = view;
-			this.msg = msg;
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        **/
+    	String chart = getResources().getStringArray(R.array.drawer_array)[position];
+        Log.i(TAG, chart);
+        if(position == 0){
+		    Fragment fragment = new TransactionFragment();
+		    //Bundle args = new Bundle();
+		    //args.putInt(TransactionFragment.ARG_POSITION, position);
+		    //newFragment.setArguments(args);
+		    FragmentManager fragmentManager = getFragmentManager();
+		    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        }
+        else if(position == 1){
+        	Fragment fragment = new OrderBookFragment();
+		    //Bundle args = new Bundle();
+		    //args.putInt(TransactionFragment.ARG_POSITION, position);
+		    //newFragment.setArguments(args);
+		    FragmentManager fragmentManager = getFragmentManager();
+		    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        }
+        else if(position == 2){
+		    Fragment fragment = new TickerFragment();
+		    //Bundle args = new Bundle();
+		    //args.putInt(TransactionFragment.ARG_POSITION, position);
+		    //newFragment.setArguments(args);
+		    FragmentManager fragmentManager = getFragmentManager();
+		    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 		}
+    	
 
-		@Override
-		protected Void doInBackground(Void... args) {
-			return null;
-		}
+        // update selected item and title, then close the drawer
+        mDrawerList.setItemChecked(position, true);
+        setTitle(mMenuTitles[position]);
+        mDrawerLayout.closeDrawer(mDrawerList);
+    }
 
-		@Override
-		protected void onPostExecute(Void result) {
-			System.out.println(msg);
+    @Override
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        getActionBar().setTitle(mTitle);
+    }
 
-			String currentLog = view.getText().toString();
-			String newLog = msg + "\n" + currentLog;
-			
-			 /*ObjectMapper mapper = new ObjectMapper();
-            try {
-				Trade t = mapper.readValue(data, Trade.class);
-				Log.i(TAG, "price is: " + t.getPrice());
-				Log.i(TAG, "amount is: " + t.getAmount());
-				Log.i(TAG, "id is: " + t.getId());
-				
-			} catch (JsonParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-			
-			view.setText(newLog);
+    /**
+     * When using the ActionBarDrawerToggle, you must call it during
+     * onPostCreate() and onConfigurationChanged()...
+     */
 
-			super.onPostExecute(result);
-		}
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
 
-	}
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart");
+        Intent intent = new Intent(this, BWTUpdateService.class);
+        startService(intent);
+    }
+    
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+        
+    }
+    
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+        Intent intent = new Intent(this, BWTUpdateService.class);
+        stopService(intent);
+    }
+
 }
