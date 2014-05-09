@@ -22,8 +22,8 @@ public class BWTUpdateService extends Service{
 	public int onStartCommand(Intent intent, int flags, int startId){
 		
 		Log.i(TAG, "starting transaction");
-		th.firstCall();
-		oh.firstCall();
+		//th.firstCall();
+		//oh.firstCall();
 		
 		Log.i(TAG, "starting orderbook");
 		th.secondCall();

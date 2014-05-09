@@ -67,6 +67,8 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int apptime_default=0x7f05000b;
+        public static final int apptime_saved=0x7f05000c;
         public static final int ask=0x7f050008;
         public static final int bid=0x7f050007;
         public static final int drawer_close=0x7f050002;

@@ -18,6 +18,7 @@
     <string name="ask">Ask: </string>
     <string name="vwap">Vwap: </string>
     <string name="volume">Volume: </string>
-    <!-- <string name="timestamp">firstTime</string> -->
+    <string name = "apptime_default">0</string>
+    <string name = "apptime_saved">0</string>
     
 </resources>

@@ -23,7 +23,7 @@ import android.widget.ListView;
 public class MainActivity extends FragmentActivity {
 	private static final String TAG = MainActivity.class.getSimpleName();
 	
-	public static final String PREFS_NAME = "MyPrefsFile";
+	//public static final String PREFS_NAME = "MyPrefsFile";
 	
 	private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -167,7 +167,7 @@ public class MainActivity extends FragmentActivity {
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart");
-        // do you want to put it here, or onResume?
+        
         initialCheck();
         
         Intent intent = new Intent(this, BWTUpdateService.class);
@@ -175,10 +175,15 @@ public class MainActivity extends FragmentActivity {
     }
     
     @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "onResume");     
+    }
+    
+    @Override
     protected void onPause() {
         super.onPause();
-        Log.i(TAG, "onPause");
-        
+        Log.i(TAG, "onPause");        
     }
     
     @Override
@@ -192,29 +197,35 @@ public class MainActivity extends FragmentActivity {
         long newerTime = System.currentTimeMillis();
         // We need an Editor object to make preference changes.
         // All objects are from android.context.Context
-        SharedPreferences sharedpreferences = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences sharedpreferences = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putLong("dateTimeKey", newerTime);
+        editor.putLong(getString(R.string.apptime_saved), newerTime);
         // Commit the edits!
         editor.commit();
     }
     
     private void initialCheck(){
     	long newerTime = System.currentTimeMillis();
-    	SharedPreferences sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-    	long olderTime = sharedpreferences.getLong("dateTimeKey", new Date().getTime()); ;
-    	int diffInHours = (int)( (newerTime - olderTime) / (1000 * 60 * 60) );
-    	if(diffInHours>=12){
-    		
+    	SharedPreferences sharedpreferences = getPreferences(Context.MODE_PRIVATE);
+    	long defaultTime = Long.parseLong(getResources().getString(R.string.apptime_default));
+    	long olderTime = sharedpreferences.getLong(getString(R.string.apptime_saved), defaultTime);
+    	Log.i(TAG, "olderTime is: "+olderTime);
+    	long diffInHours = ( (newerTime - olderTime) / (1000*60*60));
+    	Log.i(TAG, "diff is: "+diffInHours);
+    	if(diffInHours>=2){
+    		Log.i(TAG, "bigger than 2 hours, reloading database with new data");
+    		prepareDatabase();
     	}
-    	/**SharedPreference
-        
+    	/**
         ProgressDialog progress = new ProgressDialog(this);
 		progress.setTitle("Loading");
 		progress.setMessage("Wait while loading...");
 		progress.show();
         progress.dismiss();
         */
+    }
+    private void prepareDatabase(){
+    	
     }
 
 }
