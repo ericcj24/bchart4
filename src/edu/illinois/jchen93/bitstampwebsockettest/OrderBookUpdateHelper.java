@@ -206,7 +206,7 @@ public class OrderBookUpdateHelper{
 	private int addNewOrderbook(OrderBook orderBook){
 		int count = 0;		
 		ContentResolver cr = context.getContentResolver();
-	
+		if(orderBook.getTimestamp()!=null){
 		String timestamp = orderBook.getTimestamp();
 		Long timeNow = Long.parseLong(timestamp);		
 		//Log.i(TAG, " time now is: "+ timestamp);
@@ -240,7 +240,7 @@ public class OrderBookUpdateHelper{
 			values1[i].put(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN, bidList.get(i).get(1));
 			count++;
 		}
-		cr.bulkInsert(OrderBookProviderContract.CONTENT_URI, values1);
+		cr.bulkInsert(OrderBookProviderContract.CONTENT_URI, values1);}
 		return count;
 	}
 }

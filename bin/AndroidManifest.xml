@@ -48,13 +48,13 @@
             android:authorities="edu.illinois.jchen93.bitstampwebsockettest.ticker"
             android:exported="false" />
         
-        <!-- 
+        
         <receiver android:name=".NetworkReceiver">
       		<intent-filter>
         	<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
       		</intent-filter>
     	</receiver>
-    	 -->
+    	
     	 
     </application>
 

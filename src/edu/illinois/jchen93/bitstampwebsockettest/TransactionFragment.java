@@ -163,10 +163,12 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
        
         plot1.getGraphWidget().getDomainLabelPaint().setTextSize(15);
         plot1.getGraphWidget().getRangeLabelPaint().setTextSize(15);
+        //plot1.getGraphWidget().setMarginTop(18);
+        //plot1.getGraphWidget().setMarginRight(10);
         //plot1.getGraphWidget().setDomainLabelOrientation(-20);
         //plot1.getGraphWidget().setRangeLabelOrientation(20);
-        plot1.getGraphWidget().setPaddingRight(25);
-        plot1.getGraphWidget().setPaddingTop(6);
+        //plot1.getGraphWidget().setPaddingRight(25);
+        //plot1.getGraphWidget().setPaddingTop(8);
         
         plot1.getGraphWidget().setSize(new SizeMetrics(70, SizeLayoutType.FILL, 50, SizeLayoutType.FILL));
 

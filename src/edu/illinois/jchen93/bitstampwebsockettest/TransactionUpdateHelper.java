@@ -206,7 +206,7 @@ public class TransactionUpdateHelper{
 
 	private int addNewTransaction(ArrayList<Transaction> lt){
 		int count = 0;
-		
+		if(lt.size()>0){
 		long newDate = Long.parseLong(lt.get(0).getDate());
 		
 		//Log.i(TAG, "database date is: "+newDate);
@@ -238,7 +238,7 @@ public class TransactionUpdateHelper{
 			}
 			cr.bulkInsert(TransactionProviderContract.CONTENT_URI, values);
 		}
-		cursor.close();
+		cursor.close();}
 		Log.i(TAG, "count size is: " + count);
 		return count;
 	}

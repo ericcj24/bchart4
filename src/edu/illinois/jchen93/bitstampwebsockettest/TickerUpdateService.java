@@ -32,7 +32,7 @@ public class TickerUpdateService extends IntentService{
   protected void onHandleIntent(Intent workIntent) {
 		//Log.i(TAG, this.toString());
 		// Gets data from the incoming Intent
-		String dataString = workIntent.getDataString();
+		//String dataString = workIntent.getDataString();
         
 		fetchTicker();
 	}

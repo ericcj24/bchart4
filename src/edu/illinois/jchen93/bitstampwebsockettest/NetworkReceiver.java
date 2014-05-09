@@ -17,14 +17,16 @@ public class NetworkReceiver extends BroadcastReceiver{
 		boolean isNetworkDown = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
 		
 		if(isNetworkDown){
-			CharSequence text = "onReceive: NOT connected, stopping UpdateService";
-			int duration = Toast.LENGTH_SHORT;
+			Log.i(TAG, "internet down");
+			CharSequence text = "No internet connection";
+			int duration = Toast.LENGTH_LONG;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
 			
 		}else{
-			CharSequence text = "onReceive: connected, starting UpdateService";
-			int duration = Toast.LENGTH_SHORT;
+			Log.i(TAG, "internet up");
+			CharSequence text = "Internet connected";
+			int duration = Toast.LENGTH_LONG;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
 
