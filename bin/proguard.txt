@@ -1,0 +1,28 @@
+# view res/layout/activity_main.xml #generated:3
+-keep class android.support.v4.widget.DrawerLayout { <init>(...); }
+
+# view res/layout/fragment_chart.xml #generated:17
+# view res/layout/fragment_orderbook_chart.xml #generated:17
+-keep class com.androidplot.xy.XYPlot { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class edu.illinois.jchen93.bitstampwebsockettest.BWTUpdateService { <init>(...); }
+
+# view AndroidManifest.xml #generated:18
+-keep class edu.illinois.jchen93.bitstampwebsockettest.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:52
+-keep class edu.illinois.jchen93.bitstampwebsockettest.NetworkReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:41
+-keep class edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider { <init>(...); }
+
+# view AndroidManifest.xml #generated:46
+-keep class edu.illinois.jchen93.bitstampwebsockettest.TickerProvider { <init>(...); }
+
+# view AndroidManifest.xml #generated:32
+-keep class edu.illinois.jchen93.bitstampwebsockettest.TickerUpdateService { <init>(...); }
+
+# view AndroidManifest.xml #generated:36
+-keep class edu.illinois.jchen93.bitstampwebsockettest.TransactionProvider { <init>(...); }
+

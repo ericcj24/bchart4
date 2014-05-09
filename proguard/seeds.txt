@@ -1,0 +1,369 @@
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentActivity
+android.support.v4.app.FragmentActivity: FragmentActivity()
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+android.support.v4.app.FragmentTabHost$SavedState
+android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: int getTabIndicatorColor()
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTabStrip: boolean getDrawFullUnderline()
+android.support.v4.view.PagerTabStrip: int getMinHeight()
+android.support.v4.view.PagerTitleStrip: void setSingleLineAllCaps(android.widget.TextView)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: int getTextSpacing()
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.PagerTitleStrip: int getMinHeight()
+android.support.v4.view.ViewPager: void setScrollState(int)
+android.support.v4.view.ViewPager: void setAdapter(android.support.v4.view.PagerAdapter)
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter getAdapter()
+android.support.v4.view.ViewPager: void setOnAdapterChangeListener(android.support.v4.view.ViewPager$OnAdapterChangeListener)
+android.support.v4.view.ViewPager: int getClientWidth()
+android.support.v4.view.ViewPager: void setCurrentItem(int)
+android.support.v4.view.ViewPager: int getCurrentItem()
+android.support.v4.view.ViewPager: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: void setChildrenDrawingOrderEnabledCompat(boolean)
+android.support.v4.view.ViewPager: int getOffscreenPageLimit()
+android.support.v4.view.ViewPager: void setOffscreenPageLimit(int)
+android.support.v4.view.ViewPager: void setPageMargin(int)
+android.support.v4.view.ViewPager: int getPageMargin()
+android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
+android.support.v4.view.ViewPager: void setScrollingCacheEnabled(boolean)
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.DrawerLayout
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context)
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.DrawerLayout: void setScrimColor(int)
+android.support.v4.widget.DrawerLayout: void setDrawerListener(android.support.v4.widget.DrawerLayout$DrawerListener)
+android.support.v4.widget.DrawerLayout: void setDrawerLockMode(int)
+android.support.v4.widget.DrawerLayout$SavedState
+android.support.v4.widget.DrawerLayout$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.SlidingPaneLayout: void setParallaxDistance(int)
+android.support.v4.widget.SlidingPaneLayout: int getParallaxDistance()
+android.support.v4.widget.SlidingPaneLayout: void setSliderFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: int getSliderFadeColor()
+android.support.v4.widget.SlidingPaneLayout: void setCoveredFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: int getCoveredFadeColor()
+android.support.v4.widget.SlidingPaneLayout: void setPanelSlideListener(android.support.v4.widget.SlidingPaneLayout$PanelSlideListener)
+android.support.v4.widget.SlidingPaneLayout: void setShadowDrawable(android.graphics.drawable.Drawable)
+android.support.v4.widget.SlidingPaneLayout: void setShadowResource(int)
+android.support.v4.widget.SlidingPaneLayout$SavedState
+android.support.v4.widget.SlidingPaneLayout$SavedState: android.os.Parcelable$Creator CREATOR
+com.androidplot.Plot: com.androidplot.util.DisplayDimensions getDisplayDimensions()
+com.androidplot.Plot: Plot(android.content.Context,java.lang.String)
+com.androidplot.Plot: Plot(android.content.Context,java.lang.String,com.androidplot.Plot$RenderMode)
+com.androidplot.Plot: Plot(android.content.Context,android.util.AttributeSet)
+com.androidplot.Plot: Plot(android.content.Context,android.util.AttributeSet,int)
+com.androidplot.Plot: void setRenderMode(com.androidplot.Plot$RenderMode)
+com.androidplot.Plot: com.androidplot.Plot$RenderMode getRenderMode()
+com.androidplot.Plot: java.util.Set getSeriesSet()
+com.androidplot.Plot: java.util.List getRendererList()
+com.androidplot.Plot: void setMarkupEnabled(boolean)
+com.androidplot.Plot: java.lang.String getTitle()
+com.androidplot.Plot: void setTitle(java.lang.String)
+com.androidplot.Plot: com.androidplot.ui.LayoutManager getLayoutManager()
+com.androidplot.Plot: void setLayoutManager(com.androidplot.ui.LayoutManager)
+com.androidplot.Plot: com.androidplot.ui.widget.TextLabelWidget getTitleWidget()
+com.androidplot.Plot: void setTitleWidget(com.androidplot.ui.widget.TextLabelWidget)
+com.androidplot.Plot: android.graphics.Paint getBackgroundPaint()
+com.androidplot.Plot: void setBackgroundPaint(android.graphics.Paint)
+com.androidplot.Plot: float getPlotMarginTop()
+com.androidplot.Plot: void setPlotMarginTop(float)
+com.androidplot.Plot: float getPlotMarginBottom()
+com.androidplot.Plot: void setPlotMarginBottom(float)
+com.androidplot.Plot: float getPlotMarginLeft()
+com.androidplot.Plot: void setPlotMarginLeft(float)
+com.androidplot.Plot: float getPlotMarginRight()
+com.androidplot.Plot: void setPlotMarginRight(float)
+com.androidplot.Plot: float getPlotPaddingTop()
+com.androidplot.Plot: void setPlotPaddingTop(float)
+com.androidplot.Plot: float getPlotPaddingBottom()
+com.androidplot.Plot: void setPlotPaddingBottom(float)
+com.androidplot.Plot: float getPlotPaddingLeft()
+com.androidplot.Plot: void setPlotPaddingLeft(float)
+com.androidplot.Plot: float getPlotPaddingRight()
+com.androidplot.Plot: void setPlotPaddingRight(float)
+com.androidplot.Plot: android.graphics.Paint getBorderPaint()
+com.androidplot.Plot: void setBorderPaint(android.graphics.Paint)
+com.androidplot.Plot$BorderStyle: com.androidplot.Plot$BorderStyle[] values()
+com.androidplot.Plot$BorderStyle: com.androidplot.Plot$BorderStyle valueOf(java.lang.String)
+com.androidplot.Plot$RenderMode: com.androidplot.Plot$RenderMode[] values()
+com.androidplot.Plot$RenderMode: com.androidplot.Plot$RenderMode valueOf(java.lang.String)
+com.androidplot.pie.PieChart: void setPieWidget(com.androidplot.pie.PieWidget)
+com.androidplot.pie.PieChart: com.androidplot.pie.PieWidget getPieWidget()
+com.androidplot.pie.PieRenderer$DonutMode: com.androidplot.pie.PieRenderer$DonutMode[] values()
+com.androidplot.pie.PieRenderer$DonutMode: com.androidplot.pie.PieRenderer$DonutMode valueOf(java.lang.String)
+com.androidplot.ui.AnchorPosition: com.androidplot.ui.AnchorPosition[] values()
+com.androidplot.ui.AnchorPosition: com.androidplot.ui.AnchorPosition valueOf(java.lang.String)
+com.androidplot.ui.PositionMetric$LayoutMode: com.androidplot.ui.PositionMetric$LayoutMode[] values()
+com.androidplot.ui.PositionMetric$LayoutMode: com.androidplot.ui.PositionMetric$LayoutMode valueOf(java.lang.String)
+com.androidplot.ui.PositionMetric$Origin: com.androidplot.ui.PositionMetric$Origin[] values()
+com.androidplot.ui.PositionMetric$Origin: com.androidplot.ui.PositionMetric$Origin valueOf(java.lang.String)
+com.androidplot.ui.SizeLayoutType: com.androidplot.ui.SizeLayoutType[] values()
+com.androidplot.ui.SizeLayoutType: com.androidplot.ui.SizeLayoutType valueOf(java.lang.String)
+com.androidplot.ui.TableModel$Axis: com.androidplot.ui.TableModel$Axis[] values()
+com.androidplot.ui.TableModel$Axis: com.androidplot.ui.TableModel$Axis valueOf(java.lang.String)
+com.androidplot.ui.TableModel$CellSizingMethod: com.androidplot.ui.TableModel$CellSizingMethod[] values()
+com.androidplot.ui.TableModel$CellSizingMethod: com.androidplot.ui.TableModel$CellSizingMethod valueOf(java.lang.String)
+com.androidplot.ui.TableOrder: com.androidplot.ui.TableOrder[] values()
+com.androidplot.ui.TableOrder: com.androidplot.ui.TableOrder valueOf(java.lang.String)
+com.androidplot.ui.TableSizingMethod: com.androidplot.ui.TableSizingMethod[] values()
+com.androidplot.ui.TableSizingMethod: com.androidplot.ui.TableSizingMethod valueOf(java.lang.String)
+com.androidplot.ui.TextOrientationType: com.androidplot.ui.TextOrientationType[] values()
+com.androidplot.ui.TextOrientationType: com.androidplot.ui.TextOrientationType valueOf(java.lang.String)
+com.androidplot.ui.XLayoutStyle: com.androidplot.ui.XLayoutStyle[] values()
+com.androidplot.ui.XLayoutStyle: com.androidplot.ui.XLayoutStyle valueOf(java.lang.String)
+com.androidplot.ui.YLayoutStyle: com.androidplot.ui.YLayoutStyle[] values()
+com.androidplot.ui.YLayoutStyle: com.androidplot.ui.YLayoutStyle valueOf(java.lang.String)
+com.androidplot.xy.BarRenderer$BarRenderStyle: com.androidplot.xy.BarRenderer$BarRenderStyle[] values()
+com.androidplot.xy.BarRenderer$BarRenderStyle: com.androidplot.xy.BarRenderer$BarRenderStyle valueOf(java.lang.String)
+com.androidplot.xy.BarRenderer$BarWidthStyle: com.androidplot.xy.BarRenderer$BarWidthStyle[] values()
+com.androidplot.xy.BarRenderer$BarWidthStyle: com.androidplot.xy.BarRenderer$BarWidthStyle valueOf(java.lang.String)
+com.androidplot.xy.BoundaryMode: com.androidplot.xy.BoundaryMode[] values()
+com.androidplot.xy.BoundaryMode: com.androidplot.xy.BoundaryMode valueOf(java.lang.String)
+com.androidplot.xy.FillDirection: com.androidplot.xy.FillDirection[] values()
+com.androidplot.xy.FillDirection: com.androidplot.xy.FillDirection valueOf(java.lang.String)
+com.androidplot.xy.SimpleXYSeries$ArrayFormat: com.androidplot.xy.SimpleXYSeries$ArrayFormat[] values()
+com.androidplot.xy.SimpleXYSeries$ArrayFormat: com.androidplot.xy.SimpleXYSeries$ArrayFormat valueOf(java.lang.String)
+com.androidplot.xy.ValueMarker$TextOrientation: com.androidplot.xy.ValueMarker$TextOrientation[] values()
+com.androidplot.xy.ValueMarker$TextOrientation: com.androidplot.xy.ValueMarker$TextOrientation valueOf(java.lang.String)
+com.androidplot.xy.XYAxisType: com.androidplot.xy.XYAxisType[] values()
+com.androidplot.xy.XYAxisType: com.androidplot.xy.XYAxisType valueOf(java.lang.String)
+com.androidplot.xy.XYFramingModel: com.androidplot.xy.XYFramingModel[] values()
+com.androidplot.xy.XYFramingModel: com.androidplot.xy.XYFramingModel valueOf(java.lang.String)
+com.androidplot.xy.XYGraphWidget$XYPlotOrientation: com.androidplot.xy.XYGraphWidget$XYPlotOrientation[] values()
+com.androidplot.xy.XYGraphWidget$XYPlotOrientation: com.androidplot.xy.XYGraphWidget$XYPlotOrientation valueOf(java.lang.String)
+com.androidplot.xy.XYPlot
+com.androidplot.xy.XYPlot: XYPlot(android.content.Context,java.lang.String)
+com.androidplot.xy.XYPlot: XYPlot(android.content.Context,java.lang.String,com.androidplot.Plot$RenderMode)
+com.androidplot.xy.XYPlot: XYPlot(android.content.Context,android.util.AttributeSet)
+com.androidplot.xy.XYPlot: XYPlot(android.content.Context,android.util.AttributeSet,int)
+com.androidplot.xy.XYPlot: void setCursorPosition(android.graphics.PointF)
+com.androidplot.xy.XYPlot: int getTicksPerRangeLabel()
+com.androidplot.xy.XYPlot: void setTicksPerRangeLabel(int)
+com.androidplot.xy.XYPlot: int getTicksPerDomainLabel()
+com.androidplot.xy.XYPlot: void setTicksPerDomainLabel(int)
+com.androidplot.xy.XYPlot: com.androidplot.xy.XYStepMode getDomainStepMode()
+com.androidplot.xy.XYPlot: void setDomainStepMode(com.androidplot.xy.XYStepMode)
+com.androidplot.xy.XYPlot: double getDomainStepValue()
+com.androidplot.xy.XYPlot: void setDomainStepValue(double)
+com.androidplot.xy.XYPlot: com.androidplot.xy.XYStepMode getRangeStepMode()
+com.androidplot.xy.XYPlot: void setRangeStepMode(com.androidplot.xy.XYStepMode)
+com.androidplot.xy.XYPlot: double getRangeStepValue()
+com.androidplot.xy.XYPlot: void setRangeStepValue(double)
+com.androidplot.xy.XYPlot: java.lang.String getDomainLabel()
+com.androidplot.xy.XYPlot: void setDomainLabel(java.lang.String)
+com.androidplot.xy.XYPlot: java.lang.String getRangeLabel()
+com.androidplot.xy.XYPlot: void setRangeLabel(java.lang.String)
+com.androidplot.xy.XYPlot: com.androidplot.xy.XYLegendWidget getLegendWidget()
+com.androidplot.xy.XYPlot: void setLegendWidget(com.androidplot.xy.XYLegendWidget)
+com.androidplot.xy.XYPlot: com.androidplot.xy.XYGraphWidget getGraphWidget()
+com.androidplot.xy.XYPlot: void setGraphWidget(com.androidplot.xy.XYGraphWidget)
+com.androidplot.xy.XYPlot: com.androidplot.ui.widget.TextLabelWidget getDomainLabelWidget()
+com.androidplot.xy.XYPlot: void setDomainLabelWidget(com.androidplot.ui.widget.TextLabelWidget)
+com.androidplot.xy.XYPlot: com.androidplot.ui.widget.TextLabelWidget getRangeLabelWidget()
+com.androidplot.xy.XYPlot: void setRangeLabelWidget(com.androidplot.ui.widget.TextLabelWidget)
+com.androidplot.xy.XYPlot: java.text.Format getRangeValueFormat()
+com.androidplot.xy.XYPlot: void setRangeValueFormat(java.text.Format)
+com.androidplot.xy.XYPlot: java.text.Format getDomainValueFormat()
+com.androidplot.xy.XYPlot: void setDomainValueFormat(java.text.Format)
+com.androidplot.xy.XYPlot: java.lang.Number getDomainOrigin()
+com.androidplot.xy.XYPlot: java.lang.Number getRangeOrigin()
+com.androidplot.xy.XYPlot: void setUserDomainOrigin(java.lang.Number)
+com.androidplot.xy.XYPlot: void setUserRangeOrigin(java.lang.Number)
+com.androidplot.xy.XYPlot: com.androidplot.xy.XYFramingModel getDomainFramingModel()
+com.androidplot.xy.XYPlot: com.androidplot.xy.XYFramingModel getRangeFramingModel()
+com.androidplot.xy.XYPlot: java.lang.Number getCalculatedMinX()
+com.androidplot.xy.XYPlot: java.lang.Number getCalculatedMaxX()
+com.androidplot.xy.XYPlot: java.lang.Number getCalculatedMinY()
+com.androidplot.xy.XYPlot: java.lang.Number getCalculatedMaxY()
+com.androidplot.xy.XYPlot: void setDrawDomainOriginEnabled(boolean)
+com.androidplot.xy.XYPlot: void setDrawRangeOriginEnabled(boolean)
+com.androidplot.xy.XYPlot: com.androidplot.xy.RectRegion getDefaultBounds()
+com.androidplot.xy.XYPlot: void setDefaultBounds(com.androidplot.xy.RectRegion)
+com.androidplot.xy.XYPlot: java.lang.Number getRangeTopMin()
+com.androidplot.xy.XYPlot: void setRangeTopMin(java.lang.Number)
+com.androidplot.xy.XYPlot: java.lang.Number getRangeTopMax()
+com.androidplot.xy.XYPlot: void setRangeTopMax(java.lang.Number)
+com.androidplot.xy.XYPlot: java.lang.Number getRangeBottomMin()
+com.androidplot.xy.XYPlot: void setRangeBottomMin(java.lang.Number)
+com.androidplot.xy.XYPlot: java.lang.Number getRangeBottomMax()
+com.androidplot.xy.XYPlot: void setRangeBottomMax(java.lang.Number)
+com.androidplot.xy.XYPlot: java.lang.Number getDomainLeftMin()
+com.androidplot.xy.XYPlot: void setDomainLeftMin(java.lang.Number)
+com.androidplot.xy.XYPlot: java.lang.Number getDomainLeftMax()
+com.androidplot.xy.XYPlot: void setDomainLeftMax(java.lang.Number)
+com.androidplot.xy.XYPlot: java.lang.Number getDomainRightMin()
+com.androidplot.xy.XYPlot: void setDomainRightMin(java.lang.Number)
+com.androidplot.xy.XYPlot: java.lang.Number getDomainRightMax()
+com.androidplot.xy.XYPlot: void setDomainRightMax(java.lang.Number)
+com.androidplot.xy.XYPlotZoomPan: void setOnTouchListener(android.view.View$OnTouchListener)
+com.androidplot.xy.XYPlotZoomPan: boolean getZoomVertically()
+com.androidplot.xy.XYPlotZoomPan: void setZoomVertically(boolean)
+com.androidplot.xy.XYPlotZoomPan: boolean getZoomHorizontally()
+com.androidplot.xy.XYPlotZoomPan: void setZoomHorizontally(boolean)
+com.androidplot.xy.XYPlotZoomPan: void setZoomEnabled(boolean)
+com.androidplot.xy.XYPlotZoomPan: boolean getZoomEnabled()
+com.androidplot.xy.XYPlotZoomPan$a: com.androidplot.xy.XYPlotZoomPan$a[] values()
+com.androidplot.xy.XYPlotZoomPan$a: com.androidplot.xy.XYPlotZoomPan$a valueOf(java.lang.String)
+com.androidplot.xy.XYStepMode: com.androidplot.xy.XYStepMode[] values()
+com.androidplot.xy.XYStepMode: com.androidplot.xy.XYStepMode valueOf(java.lang.String)
+com.fasterxml.jackson.annotation.JsonAutoDetect$Visibility: com.fasterxml.jackson.annotation.JsonAutoDetect$Visibility[] values()
+com.fasterxml.jackson.annotation.JsonAutoDetect$Visibility: com.fasterxml.jackson.annotation.JsonAutoDetect$Visibility valueOf(java.lang.String)
+com.fasterxml.jackson.annotation.JsonFormat$Shape: com.fasterxml.jackson.annotation.JsonFormat$Shape[] values()
+com.fasterxml.jackson.annotation.JsonFormat$Shape: com.fasterxml.jackson.annotation.JsonFormat$Shape valueOf(java.lang.String)
+com.fasterxml.jackson.annotation.JsonInclude$Include: com.fasterxml.jackson.annotation.JsonInclude$Include[] values()
+com.fasterxml.jackson.annotation.JsonInclude$Include: com.fasterxml.jackson.annotation.JsonInclude$Include valueOf(java.lang.String)
+com.fasterxml.jackson.annotation.JsonTypeInfo$As: com.fasterxml.jackson.annotation.JsonTypeInfo$As[] values()
+com.fasterxml.jackson.annotation.JsonTypeInfo$As: com.fasterxml.jackson.annotation.JsonTypeInfo$As valueOf(java.lang.String)
+com.fasterxml.jackson.annotation.JsonTypeInfo$Id: com.fasterxml.jackson.annotation.JsonTypeInfo$Id[] values()
+com.fasterxml.jackson.annotation.JsonTypeInfo$Id: com.fasterxml.jackson.annotation.JsonTypeInfo$Id valueOf(java.lang.String)
+com.fasterxml.jackson.annotation.PropertyAccessor: com.fasterxml.jackson.annotation.PropertyAccessor[] values()
+com.fasterxml.jackson.annotation.PropertyAccessor: com.fasterxml.jackson.annotation.PropertyAccessor valueOf(java.lang.String)
+com.fasterxml.jackson.core.JsonEncoding: com.fasterxml.jackson.core.JsonEncoding[] values()
+com.fasterxml.jackson.core.JsonEncoding: com.fasterxml.jackson.core.JsonEncoding valueOf(java.lang.String)
+com.fasterxml.jackson.core.JsonFactory$Feature: com.fasterxml.jackson.core.JsonFactory$Feature[] values()
+com.fasterxml.jackson.core.JsonFactory$Feature: com.fasterxml.jackson.core.JsonFactory$Feature valueOf(java.lang.String)
+com.fasterxml.jackson.core.JsonGenerator$Feature: com.fasterxml.jackson.core.JsonGenerator$Feature[] values()
+com.fasterxml.jackson.core.JsonGenerator$Feature: com.fasterxml.jackson.core.JsonGenerator$Feature valueOf(java.lang.String)
+com.fasterxml.jackson.core.JsonParser$Feature: com.fasterxml.jackson.core.JsonParser$Feature[] values()
+com.fasterxml.jackson.core.JsonParser$Feature: com.fasterxml.jackson.core.JsonParser$Feature valueOf(java.lang.String)
+com.fasterxml.jackson.core.JsonParser$NumberType: com.fasterxml.jackson.core.JsonParser$NumberType[] values()
+com.fasterxml.jackson.core.JsonParser$NumberType: com.fasterxml.jackson.core.JsonParser$NumberType valueOf(java.lang.String)
+com.fasterxml.jackson.core.JsonToken: com.fasterxml.jackson.core.JsonToken[] values()
+com.fasterxml.jackson.core.JsonToken: com.fasterxml.jackson.core.JsonToken valueOf(java.lang.String)
+com.fasterxml.jackson.core.format.MatchStrength: com.fasterxml.jackson.core.format.MatchStrength[] values()
+com.fasterxml.jackson.core.format.MatchStrength: com.fasterxml.jackson.core.format.MatchStrength valueOf(java.lang.String)
+com.fasterxml.jackson.core.util.BufferRecycler$ByteBufferType: com.fasterxml.jackson.core.util.BufferRecycler$ByteBufferType[] values()
+com.fasterxml.jackson.core.util.BufferRecycler$ByteBufferType: com.fasterxml.jackson.core.util.BufferRecycler$ByteBufferType valueOf(java.lang.String)
+com.fasterxml.jackson.core.util.BufferRecycler$CharBufferType: com.fasterxml.jackson.core.util.BufferRecycler$CharBufferType[] values()
+com.fasterxml.jackson.core.util.BufferRecycler$CharBufferType: com.fasterxml.jackson.core.util.BufferRecycler$CharBufferType valueOf(java.lang.String)
+com.fasterxml.jackson.databind.AnnotationIntrospector$ReferenceProperty$Type: com.fasterxml.jackson.databind.AnnotationIntrospector$ReferenceProperty$Type[] values()
+com.fasterxml.jackson.databind.AnnotationIntrospector$ReferenceProperty$Type: com.fasterxml.jackson.databind.AnnotationIntrospector$ReferenceProperty$Type valueOf(java.lang.String)
+com.fasterxml.jackson.databind.DeserializationFeature: com.fasterxml.jackson.databind.DeserializationFeature[] values()
+com.fasterxml.jackson.databind.DeserializationFeature: com.fasterxml.jackson.databind.DeserializationFeature valueOf(java.lang.String)
+com.fasterxml.jackson.databind.MapperFeature: com.fasterxml.jackson.databind.MapperFeature[] values()
+com.fasterxml.jackson.databind.MapperFeature: com.fasterxml.jackson.databind.MapperFeature valueOf(java.lang.String)
+com.fasterxml.jackson.databind.ObjectMapper$DefaultTyping: com.fasterxml.jackson.databind.ObjectMapper$DefaultTyping[] values()
+com.fasterxml.jackson.databind.ObjectMapper$DefaultTyping: com.fasterxml.jackson.databind.ObjectMapper$DefaultTyping valueOf(java.lang.String)
+com.fasterxml.jackson.databind.SerializationFeature: com.fasterxml.jackson.databind.SerializationFeature[] values()
+com.fasterxml.jackson.databind.SerializationFeature: com.fasterxml.jackson.databind.SerializationFeature valueOf(java.lang.String)
+com.fasterxml.jackson.databind.annotation.JsonSerialize$Inclusion: com.fasterxml.jackson.databind.annotation.JsonSerialize$Inclusion[] values()
+com.fasterxml.jackson.databind.annotation.JsonSerialize$Inclusion: com.fasterxml.jackson.databind.annotation.JsonSerialize$Inclusion valueOf(java.lang.String)
+com.fasterxml.jackson.databind.annotation.JsonSerialize$Typing: com.fasterxml.jackson.databind.annotation.JsonSerialize$Typing[] values()
+com.fasterxml.jackson.databind.annotation.JsonSerialize$Typing: com.fasterxml.jackson.databind.annotation.JsonSerialize$Typing valueOf(java.lang.String)
+com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes: com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes[] values()
+com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes: com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes valueOf(java.lang.String)
+com.fasterxml.jackson.databind.jsonFormatVisitors.JsonValueFormat: com.fasterxml.jackson.databind.jsonFormatVisitors.JsonValueFormat[] values()
+com.fasterxml.jackson.databind.jsonFormatVisitors.JsonValueFormat: com.fasterxml.jackson.databind.jsonFormatVisitors.JsonValueFormat valueOf(java.lang.String)
+com.fasterxml.jackson.databind.node.JsonNodeType: com.fasterxml.jackson.databind.node.JsonNodeType[] values()
+com.fasterxml.jackson.databind.node.JsonNodeType: com.fasterxml.jackson.databind.node.JsonNodeType valueOf(java.lang.String)
+com.google.gson.FieldNamingPolicy: com.google.gson.FieldNamingPolicy[] values()
+com.google.gson.FieldNamingPolicy: com.google.gson.FieldNamingPolicy valueOf(java.lang.String)
+com.google.gson.LongSerializationPolicy: com.google.gson.LongSerializationPolicy[] values()
+com.google.gson.LongSerializationPolicy: com.google.gson.LongSerializationPolicy valueOf(java.lang.String)
+com.google.gson.stream.JsonScope: com.google.gson.stream.JsonScope[] values()
+com.google.gson.stream.JsonScope: com.google.gson.stream.JsonScope valueOf(java.lang.String)
+com.google.gson.stream.JsonToken: com.google.gson.stream.JsonToken[] values()
+com.google.gson.stream.JsonToken: com.google.gson.stream.JsonToken valueOf(java.lang.String)
+com.pusher.client.channel.ChannelState: com.pusher.client.channel.ChannelState[] values()
+com.pusher.client.channel.ChannelState: com.pusher.client.channel.ChannelState valueOf(java.lang.String)
+com.pusher.client.connection.ConnectionState: com.pusher.client.connection.ConnectionState[] values()
+com.pusher.client.connection.ConnectionState: com.pusher.client.connection.ConnectionState valueOf(java.lang.String)
+edu.illinois.jchen93.bitstampwebsockettest.BWTUpdateService
+edu.illinois.jchen93.bitstampwebsockettest.BWTUpdateService: BWTUpdateService()
+edu.illinois.jchen93.bitstampwebsockettest.MainActivity
+edu.illinois.jchen93.bitstampwebsockettest.MainActivity: MainActivity()
+edu.illinois.jchen93.bitstampwebsockettest.NetworkReceiver
+edu.illinois.jchen93.bitstampwebsockettest.NetworkReceiver: NetworkReceiver()
+edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider
+edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider: OrderBookProvider()
+edu.illinois.jchen93.bitstampwebsockettest.R$array: int drawer_array
+edu.illinois.jchen93.bitstampwebsockettest.R$dimen: int activity_horizontal_margin
+edu.illinois.jchen93.bitstampwebsockettest.R$dimen: int activity_vertical_margin
+edu.illinois.jchen93.bitstampwebsockettest.R$drawable: int drawer_shadow
+edu.illinois.jchen93.bitstampwebsockettest.R$drawable: int ic_drawer
+edu.illinois.jchen93.bitstampwebsockettest.R$drawable: int ic_launcher
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int LinearLayout01
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int ask
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int askname
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int bid
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int bidname
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int chart
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int content_frame
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int drawer_layout
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int high
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int highname
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int last
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int lastname
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int left_drawer
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int low
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int lowname
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int menu_settings
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int orderbookchart
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int tickerList
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int timestamp
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int timestampname
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int volume
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int volumename
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int vwap
+edu.illinois.jchen93.bitstampwebsockettest.R$id: int vwapname
+edu.illinois.jchen93.bitstampwebsockettest.R$layout: int activity_main
+edu.illinois.jchen93.bitstampwebsockettest.R$layout: int drawer_list_item
+edu.illinois.jchen93.bitstampwebsockettest.R$layout: int fragment_chart
+edu.illinois.jchen93.bitstampwebsockettest.R$layout: int fragment_orderbook_chart
+edu.illinois.jchen93.bitstampwebsockettest.R$layout: int fragment_ticker
+edu.illinois.jchen93.bitstampwebsockettest.R$layout: int ticker_items
+edu.illinois.jchen93.bitstampwebsockettest.R$menu: int main
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int app_name
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int apptime_default
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int apptime_saved
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int ask
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int bid
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int drawer_close
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int drawer_open
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int high
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int last
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int low
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int timestamp
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int volume
+edu.illinois.jchen93.bitstampwebsockettest.R$string: int vwap
+edu.illinois.jchen93.bitstampwebsockettest.R$style: int AppBaseTheme
+edu.illinois.jchen93.bitstampwebsockettest.R$style: int AppTheme
+edu.illinois.jchen93.bitstampwebsockettest.TickerProvider
+edu.illinois.jchen93.bitstampwebsockettest.TickerProvider: TickerProvider()
+edu.illinois.jchen93.bitstampwebsockettest.TickerUpdateService
+edu.illinois.jchen93.bitstampwebsockettest.TickerUpdateService: TickerUpdateService()
+edu.illinois.jchen93.bitstampwebsockettest.Transaction
+edu.illinois.jchen93.bitstampwebsockettest.Transaction: android.os.Parcelable$Creator CREATOR
+edu.illinois.jchen93.bitstampwebsockettest.TransactionProvider
+edu.illinois.jchen93.bitstampwebsockettest.TransactionProvider: TransactionProvider()
+org.java_websocket.WebSocket$READYSTATE: org.java_websocket.WebSocket$READYSTATE[] values()
+org.java_websocket.WebSocket$READYSTATE: org.java_websocket.WebSocket$READYSTATE valueOf(java.lang.String)
+org.java_websocket.WebSocket$Role: org.java_websocket.WebSocket$Role[] values()
+org.java_websocket.WebSocket$Role: org.java_websocket.WebSocket$Role valueOf(java.lang.String)
+org.java_websocket.drafts.Draft$CloseHandshakeType: org.java_websocket.drafts.Draft$CloseHandshakeType[] values()
+org.java_websocket.drafts.Draft$CloseHandshakeType: org.java_websocket.drafts.Draft$CloseHandshakeType valueOf(java.lang.String)
+org.java_websocket.drafts.Draft$HandshakeState: org.java_websocket.drafts.Draft$HandshakeState[] values()
+org.java_websocket.drafts.Draft$HandshakeState: org.java_websocket.drafts.Draft$HandshakeState valueOf(java.lang.String)
+org.java_websocket.framing.Framedata$Opcode: org.java_websocket.framing.Framedata$Opcode[] values()
+org.java_websocket.framing.Framedata$Opcode: org.java_websocket.framing.Framedata$Opcode valueOf(java.lang.String)

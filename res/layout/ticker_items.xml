@@ -9,7 +9,7 @@
     android:orientation="vertical" android:paddingTop="2sp"
     android:weightSum = "1" >
 
-    <LinearLayout 
+    <RelativeLayout 
         android:layout_weight="0.125" 
         android:layout_height="match_parent" 
         android:layout_width="match_parent"
@@ -22,7 +22,8 @@
       	android:gravity="left"
       	android:id="@+id/timestampname" 
       	android:text="@string/timestamp"
-      	android:textSize="22sp" />
+      	android:textSize="22sp" 
+      	android:layout_alignParentLeft="true"/>
         
         <TextView 
         android:layout_height="wrap_content"
@@ -30,10 +31,11 @@
       	android:gravity="right"
       	android:id="@+id/timestamp" 
       	android:text="@string/timestamp"
-      	android:textSize="22sp" />      
-    </LinearLayout>
+      	android:textSize="22sp" 
+      	android:layout_alignParentRight="true"/>      
+    </RelativeLayout>
 
-	<LinearLayout 
+	<RelativeLayout 
 	    android:layout_weight="0.125" 
         android:layout_height="fill_parent" 
         android:layout_width="fill_parent"
@@ -44,17 +46,19 @@
       	android:layout_width="wrap_content" 
       	android:id="@+id/highname"
       	android:text="@string/high"
-      	android:textSize="22sp" />
+      	android:textSize="22sp" 
+      	android:layout_alignParentLeft="true"/>
 	    
     	<TextView 
         android:layout_height="fill_parent"
       	android:layout_width="wrap_content" 
       	android:id="@+id/high"
       	android:text="@string/high" 
-      	android:textSize="22sp" />   	
-	</LinearLayout>
+      	android:textSize="22sp"
+      	android:layout_alignParentRight="true" />   	
+	</RelativeLayout>
 
-	<LinearLayout 
+	<RelativeLayout 
 	    android:layout_weight="0.125" 
         android:layout_height="fill_parent" 
         android:layout_width="fill_parent"
@@ -65,38 +69,42 @@
       	android:layout_width="wrap_content" 
       	android:id="@+id/lowname"
       	android:text="@string/low"
-      	android:textSize="22sp" />
+      	android:textSize="22sp"
+      	android:layout_alignParentLeft="true" />
 	    
 	    <TextView 
         android:layout_height="fill_parent"
       	android:layout_width="wrap_content" 
       	android:id="@+id/low"
       	android:text="@string/low" 
-      	android:textSize="22sp" />	    
-	</LinearLayout>
+      	android:textSize="22sp"
+      	android:layout_alignParentRight="true" />	    
+	</RelativeLayout>
 	
-	<LinearLayout 
+	<RelativeLayout 
 	    android:layout_weight="0.125" 
         android:layout_height="fill_parent" 
         android:layout_width="fill_parent"
-        android:orientation = "horizontal">
+        android:orientation = "horizontal" >
 	
 	    <TextView 
         android:layout_height="fill_parent"
       	android:layout_width="wrap_content" 
       	android:id="@+id/lastname"
       	android:text="@string/last"
-      	android:textSize="22sp" />
+      	android:textSize="22sp"
+      	android:layout_alignParentLeft="true" />
 	    
 	    <TextView 
         android:layout_height="fill_parent"
       	android:layout_width="wrap_content" 
       	android:id="@+id/last"
       	android:text="@string/last" 
-      	android:textSize="22sp" />   
-	</LinearLayout>
+      	android:textSize="22sp"
+      	android:layout_alignParentRight="true" />   
+	</RelativeLayout>
 	 
-	<LinearLayout 
+	<RelativeLayout 
 	    android:layout_weight="0.125" 
         android:layout_height="fill_parent" 
         android:layout_width="fill_parent"
@@ -107,18 +115,20 @@
       	android:layout_width="wrap_content" 
       	android:id="@+id/bidname"
       	android:text="@string/bid"
-      	android:textSize="22sp" />
+      	android:textSize="22sp"
+      	android:layout_alignParentLeft="true" />
 	    
 	    <TextView 
         android:layout_height="fill_parent"
       	android:layout_width="wrap_content" 
       	android:id="@+id/bid"
       	android:text="@string/bid"
-      	android:textSize="22sp" />    
-	</LinearLayout>  
+      	android:textSize="22sp"
+      	android:layout_alignParentRight="true" />    
+	</RelativeLayout>  
 	    
 	    
-	<LinearLayout 
+	<RelativeLayout 
 	    android:layout_weight="0.125" 
         android:layout_height="fill_parent" 
         android:layout_width="fill_parent"
@@ -129,17 +139,19 @@
       	android:layout_width="wrap_content" 
       	android:id="@+id/askname"
       	android:text="@string/ask" 
-      	android:textSize="22sp" />
+      	android:textSize="22sp"
+      	android:layout_alignParentLeft="true" />
 	    
 	    <TextView 
         android:layout_height="fill_parent"
       	android:layout_width="wrap_content" 
       	android:id="@+id/ask"
       	android:text="@string/ask" 
-      	android:textSize="22sp" />      
-	</LinearLayout>
+      	android:textSize="22sp"
+      	android:layout_alignParentRight="true" />      
+	</RelativeLayout>
 	
-    <LinearLayout 
+    <RelativeLayout 
 	    android:layout_weight="0.125" 
         android:layout_height="fill_parent" 
         android:layout_width="fill_parent"
@@ -150,17 +162,19 @@
       	android:layout_width="wrap_content" 
       	android:id="@+id/vwapname"
       	android:text="@string/vwap" 
-      	android:textSize="22sp" />
+      	android:textSize="22sp"
+      	android:layout_alignParentLeft="true" />
         
         <TextView 
         android:layout_height="fill_parent"
       	android:layout_width="wrap_content" 
       	android:id="@+id/vwap"
       	android:text="@string/vwap" 
-      	android:textSize="22sp" />     
-    </LinearLayout>
+      	android:textSize="22sp"
+      	android:layout_alignParentRight="true" />     
+    </RelativeLayout>
         
-    <LinearLayout 
+    <RelativeLayout 
 	    android:layout_weight="0.125" 
         android:layout_height="fill_parent" 
         android:layout_width="fill_parent"
@@ -171,15 +185,17 @@
       	android:layout_width="wrap_content" 
       	android:id="@+id/volumename"
       	android:text="@string/volume"
-      	android:textSize="22sp" />
+      	android:textSize="22sp"
+      	android:layout_alignParentLeft="true" />
         
         <TextView 
         android:layout_height="fill_parent"
       	android:layout_width="wrap_content" 
       	android:id="@+id/volume"
       	android:text="@string/volume" 
-      	android:textSize="22sp" />     
-	</LinearLayout>
+      	android:textSize="22sp"
+      	android:layout_alignParentRight="true" />     
+	</RelativeLayout>
 	
     
 </LinearLayout>

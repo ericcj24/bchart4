@@ -1,6 +1,7 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -167,10 +168,14 @@ public class MainActivity extends FragmentActivity {
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart");
+        String CHOICE = "0";
         
-        initialCheck();
-        
+        boolean flag = isTooOlder();
+        if(flag){
+        	CHOICE = "1";
+        }
         Intent intent = new Intent(this, BWTUpdateService.class);
+        intent.setData(Uri.parse(CHOICE));
         startService(intent);
     }
     
@@ -204,7 +209,8 @@ public class MainActivity extends FragmentActivity {
         editor.commit();
     }
     
-    private void initialCheck(){
+    private boolean isTooOlder(){
+    	boolean flag = false;
     	long newerTime = System.currentTimeMillis();
     	SharedPreferences sharedpreferences = getPreferences(Context.MODE_PRIVATE);
     	long defaultTime = Long.parseLong(getResources().getString(R.string.apptime_default));
@@ -214,8 +220,13 @@ public class MainActivity extends FragmentActivity {
     	Log.i(TAG, "diff is: "+diffInHours);
     	if(diffInHours>=2){
     		Log.i(TAG, "bigger than 2 hours, reloading database with new data");
-    		prepareDatabase();
+    		flag = true;
+    		//prepareDatabase();
     	}
+    	return flag;
+    	
+    }
+    private void prepareDatabase(){
     	/**
         ProgressDialog progress = new ProgressDialog(this);
 		progress.setTitle("Loading");
@@ -223,9 +234,6 @@ public class MainActivity extends FragmentActivity {
 		progress.show();
         progress.dismiss();
         */
-    }
-    private void prepareDatabase(){
-    	
     }
 
 }

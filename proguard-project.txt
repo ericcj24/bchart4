@@ -18,3 +18,19 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-dontskipnonpubliclibraryclasses
+-dontobfuscate
+-forceprocessing
+-optimizationpasses 5
+-dontwarn org.w3c.dom.bootstrap.DOMImplementationRegistry
+-dontwarn org.slf4j.impl.StaticLoggerBinder
+-dontwarn org.slf4j.impl.StaticMDCBinder
+-dontwarn org.slf4j.impl.StaticMarkerBinder
+
+-keep class * extends android.app.Activity
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** w(...);
+    public static *** i(...);
+}

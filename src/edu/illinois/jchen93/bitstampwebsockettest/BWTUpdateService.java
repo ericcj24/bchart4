@@ -19,10 +19,14 @@ public class BWTUpdateService extends Service{
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
+		String dataString = intent.getDataString();
+		int flag = Integer.parseInt(dataString);
+		if(flag == 1){
+			Log.i(TAG, "too old, update entire database");
+			th.firstCall();
+			oh.firstCall();
+		}
 		
-		Log.i(TAG, "starting transaction");
-		th.firstCall();
-		oh.firstCall();
 		
 		Log.i(TAG, "starting orderbook");
 		th.secondCall();
