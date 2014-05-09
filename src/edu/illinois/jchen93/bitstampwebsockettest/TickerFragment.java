@@ -1,11 +1,16 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Fragment;
 import android.app.LoaderManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
@@ -22,6 +27,8 @@ public class TickerFragment extends Fragment implements LoaderManager.LoaderCall
 	// Identifies a particular Loader being used in this component
     private static final int TICKER_LOADER = 0;
     private SimpleCursorAdapter mAdapter;
+    private AlarmManager alarmMgr;
+	private int REQUEST_CODE = 103;
 	
 	public TickerFragment() {
         // Empty constructor required for fragment subclasses
@@ -89,12 +96,32 @@ public class TickerFragment extends Fragment implements LoaderManager.LoaderCall
 	public void onResume(){
 		super.onResume();
 		Log.i(TAG, "on resume");
+		
+		String CHOICE = "2";
+		Intent intent = new Intent(getActivity(), TickerUpdateService.class);
+		intent.setData(Uri.parse(CHOICE));
+		PendingIntent pendingIntent = PendingIntent.getService(getActivity(), REQUEST_CODE, intent, 0);
+        alarmMgr = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+        alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME, 0, 2500, pendingIntent);
 	}
 	
 	@Override
 	public void onPause(){
 		super.onPause();
 		Log.i(TAG, "on pause");
+		
+		String CHOICE = "2";
+	    Intent intent = new Intent(getActivity(), TickerUpdateService.class);
+	    intent.setData(Uri.parse(CHOICE));
+	    
+	    boolean alarmUp = (PendingIntent.getService(getActivity(), REQUEST_CODE, intent, PendingIntent.FLAG_NO_CREATE) != null);
+		if (alarmUp){
+			Log.i(TAG, "ticker alarm is cancelling");
+			//pendingIntent.cancel();
+			PendingIntent pendingIntent = PendingIntent.getService(getActivity(), REQUEST_CODE, intent, 0);
+			alarmMgr = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+			alarmMgr.cancel(pendingIntent);
+		}
 	}
 	
 	@Override

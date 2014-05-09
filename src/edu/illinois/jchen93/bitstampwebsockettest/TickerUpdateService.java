@@ -13,9 +13,9 @@ import android.content.Intent;
 import android.util.Log;
 
 
-public class TickerUpdateHelper extends IntentService{
+public class TickerUpdateService extends IntentService{
 	
-	private static final String TAG = TickerUpdateHelper.class.getSimpleName();
+	private static final String TAG = TickerUpdateService.class.getSimpleName();
 	
 	static final String TPATH = "https://www.bitstamp.net/api/ticker/";
 	static long databaseDate = 0;
@@ -24,7 +24,7 @@ public class TickerUpdateHelper extends IntentService{
 	   * A constructor is required, and must call the super IntentService(String)
 	   * constructor with a name for the worker thread.
 	   */
-	public TickerUpdateHelper() {
+	public TickerUpdateService() {
 		super("TickerUpdateService");
 	}
 		
@@ -89,6 +89,7 @@ public class TickerUpdateHelper extends IntentService{
 				long timeLong = newDate*1000;
 				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
             	String formattedDate =  sdf.format(timeLong);
+            	Log.i(TAG, formattedDate);
             	
 				ContentValues values = new ContentValues();
 				values.put(TickerProviderContract.TICKER_TIMESTAMP_COLUMN, formattedDate);

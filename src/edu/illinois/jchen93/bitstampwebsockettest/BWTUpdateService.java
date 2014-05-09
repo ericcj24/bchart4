@@ -1,6 +1,5 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
-import android.app.ProgressDialog;
 import android.app.Service;
 
 import android.content.Intent;
@@ -22,8 +21,8 @@ public class BWTUpdateService extends Service{
 	public int onStartCommand(Intent intent, int flags, int startId){
 		
 		Log.i(TAG, "starting transaction");
-		//th.firstCall();
-		//oh.firstCall();
+		th.firstCall();
+		oh.firstCall();
 		
 		Log.i(TAG, "starting orderbook");
 		th.secondCall();

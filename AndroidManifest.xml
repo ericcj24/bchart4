@@ -28,6 +28,10 @@
         <service
             android:name=".BWTUpdateService"
             android:exported="false"/>
+        
+        <service
+            android:name=".TickerUpdateService"
+            android:exported="false"/>
  		
  		<provider
             android:name=".TransactionProvider"
