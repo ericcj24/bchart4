@@ -30,7 +30,7 @@ public class TransactionUpdateHelper{
 	private static final String TAG = TransactionUpdateHelper.class.getSimpleName();
 	
 	private Context context;
-	static final String TPATH = "https://www.bitstamp.net/api/transactions/";
+	private static final String TPATH = "https://www.bitstamp.net/api/transactions/";
 	private Pusher pusher;
 	
 	public TransactionUpdateHelper() {}
@@ -223,16 +223,20 @@ public class TransactionUpdateHelper{
 								sortOrder);
 					
 		if (cursor.getCount()==0) {
+			int size = lt.size();
+			int i = 0;
+			ContentValues[] values = new ContentValues[size];
 			for (Transaction temp : lt){
 				long entryTime = Long.parseLong(temp.getDate());
-				ContentValues values = new ContentValues();
-				values.put(TransactionProviderContract.TRANSACTION_TID_COLUMN, temp.getTid());
-				values.put(TransactionProviderContract.TRANSACTION_DATE_COLUMN, entryTime);
-				values.put(TransactionProviderContract.TRANSACTION_PRICE_COLUMN, temp.getPrice());
-				values.put(TransactionProviderContract.TRANSACTION_AMOUNT_COLUMN, temp.getAmount());
-				cr.insert(TransactionProviderContract.CONTENT_URI, values);
+				values[i] = new ContentValues();
+				values[i].put(TransactionProviderContract.TRANSACTION_TID_COLUMN, temp.getTid());
+				values[i].put(TransactionProviderContract.TRANSACTION_DATE_COLUMN, entryTime);
+				values[i].put(TransactionProviderContract.TRANSACTION_PRICE_COLUMN, temp.getPrice());
+				values[i].put(TransactionProviderContract.TRANSACTION_AMOUNT_COLUMN, temp.getAmount());
+				i++;
 				count++;
 			}
+			cr.bulkInsert(TransactionProviderContract.CONTENT_URI, values);
 		}
 		cursor.close();
 		Log.i(TAG, "count size is: " + count);

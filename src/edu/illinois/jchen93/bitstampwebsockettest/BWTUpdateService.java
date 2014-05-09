@@ -1,5 +1,6 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
+import android.app.ProgressDialog;
 import android.app.Service;
 
 import android.content.Intent;
@@ -7,9 +8,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class BWTUpdateService extends Service{
-	static final String TAG = BWTUpdateService.class.getSimpleName();
-
-	static final String TPATH = "https://www.bitstamp.net/api/transactions/";
+	private static final String TAG = BWTUpdateService.class.getSimpleName();
 
 	private TransactionUpdateHelper th = new TransactionUpdateHelper(this);
 	private OrderBookUpdateHelper oh = new OrderBookUpdateHelper(this);
@@ -24,9 +23,10 @@ public class BWTUpdateService extends Service{
 		
 		Log.i(TAG, "starting transaction");
 		th.firstCall();
-		th.secondCall();
-		Log.i(TAG, "starting orderbook");
 		oh.firstCall();
+		
+		Log.i(TAG, "starting orderbook");
+		th.secondCall();
 		oh.secondCall();	
 		
 		return START_NOT_STICKY;

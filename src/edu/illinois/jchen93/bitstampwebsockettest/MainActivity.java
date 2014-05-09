@@ -4,7 +4,10 @@ package edu.illinois.jchen93.bitstampwebsockettest;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
@@ -19,6 +22,8 @@ import android.widget.ListView;
 
 public class MainActivity extends FragmentActivity {
 	private static final String TAG = MainActivity.class.getSimpleName();
+	
+	public static final String PREFS_NAME = "MyPrefsFile";
 	
 	private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -162,6 +167,9 @@ public class MainActivity extends FragmentActivity {
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart");
+        // do you want to put it here, or onResume?
+        initialCheck();
+        
         Intent intent = new Intent(this, BWTUpdateService.class);
         startService(intent);
     }
@@ -179,6 +187,34 @@ public class MainActivity extends FragmentActivity {
         Log.i(TAG, "onStop");
         Intent intent = new Intent(this, BWTUpdateService.class);
         stopService(intent);
+        
+        // do you want to put it here or onPause?
+        long newerTime = System.currentTimeMillis();
+        // We need an Editor object to make preference changes.
+        // All objects are from android.context.Context
+        SharedPreferences sharedpreferences = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putLong("dateTimeKey", newerTime);
+        // Commit the edits!
+        editor.commit();
+    }
+    
+    private void initialCheck(){
+    	long newerTime = System.currentTimeMillis();
+    	SharedPreferences sharedpreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+    	long olderTime = sharedpreferences.getLong("dateTimeKey", new Date().getTime()); ;
+    	int diffInHours = (int)( (newerTime - olderTime) / (1000 * 60 * 60) );
+    	if(diffInHours>=12){
+    		
+    	}
+    	/**SharedPreference
+        
+        ProgressDialog progress = new ProgressDialog(this);
+		progress.setTitle("Loading");
+		progress.setMessage("Wait while loading...");
+		progress.show();
+        progress.dismiss();
+        */
     }
 
 }
