@@ -218,7 +218,7 @@ public class MainActivity extends FragmentActivity {
     	Log.i(TAG, "olderTime is: "+olderTime);
     	long diffInHours = ( (newerTime - olderTime) / (1000*60*60));
     	Log.i(TAG, "diff is: "+diffInHours);
-    	if(diffInHours>=2){
+    	if(diffInHours>=1){
     		Log.i(TAG, "bigger than 2 hours, reloading database with new data");
     		flag = true;
     		//prepareDatabase();
