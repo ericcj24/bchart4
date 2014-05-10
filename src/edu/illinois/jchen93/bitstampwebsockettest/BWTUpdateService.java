@@ -28,7 +28,7 @@ public class BWTUpdateService extends Service{
 		}
 		
 		
-		Log.i(TAG, "starting orderbook");
+		Log.i(TAG, "starting orderbook and transaction");
 		th.secondCall();
 		oh.secondCall();	
 		

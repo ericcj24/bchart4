@@ -19,6 +19,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -132,6 +133,7 @@ public class OrderBookUpdateHelper{
 									selectionArgs, 
 									sortOrder);
 			
+			int count = 0;
 			long unixTime = System.currentTimeMillis() / 1000L;
 			
 			for(ArrayList<String> t : ob.getAsks()){
@@ -140,7 +142,8 @@ public class OrderBookUpdateHelper{
 				values.put(OrderBookProviderContract.ORDERBOOK_KIND_COLUMN, "ASK");
 				values.put(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN, t.get(0));
 				values.put(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN, t.get(1));
-				cr.insert(OrderBookProviderContract.CONTENT_URI, values);					
+				cr.insert(OrderBookProviderContract.CONTENT_URI, values);
+				count++;
 			}
 			for(ArrayList<String> t : ob.getBids()){
 				ContentValues values = new ContentValues();
@@ -148,8 +151,10 @@ public class OrderBookUpdateHelper{
 				values.put(OrderBookProviderContract.ORDERBOOK_KIND_COLUMN, "BID");
 				values.put(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN, t.get(0));
 				values.put(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN, t.get(1));
-				cr.insert(OrderBookProviderContract.CONTENT_URI, values);					
+				cr.insert(OrderBookProviderContract.CONTENT_URI, values);	
+				count++;
 			}
+			Log.i(TAG,"stream count is: "+count);
 			cursor.close();
 		}
 	}
@@ -218,29 +223,29 @@ public class OrderBookUpdateHelper{
 		
 		ArrayList<ArrayList<String>> askList = orderBook.getAsks();
 		int askInsertSize = askSize/5;
-		ContentValues[] values = new ContentValues[askInsertSize];
-		for(int i=0; i<askInsertSize; i++){
+		ArrayList<ArrayList<String>> bidList = orderBook.getBids();
+		int bidInsertSize = bidSize/5;
+		
+		ContentValues[] values = new ContentValues[askInsertSize+bidInsertSize];
+		int i=0;
+		for(i=0; i<askInsertSize; i++){
 			values[i] = new ContentValues();
 			values[i].put(OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN, timeNow);
 			values[i].put(OrderBookProviderContract.ORDERBOOK_KIND_COLUMN, "ASK");
 			values[i].put(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN, askList.get(i).get(0));
 			values[i].put(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN, askList.get(i).get(1));
-			count++;			
-		}
-		cr.bulkInsert(OrderBookProviderContract.CONTENT_URI, values);
-
-		ArrayList<ArrayList<String>> bidList = orderBook.getBids();
-		int bidInsertSize = bidSize/5;
-		ContentValues[] values1 = new ContentValues[bidInsertSize];
-		for(int i=0; i<bidInsertSize; i++){
-			values1[i] = new ContentValues();
-			values1[i].put(OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN, timeNow);
-			values1[i].put(OrderBookProviderContract.ORDERBOOK_KIND_COLUMN, "BID");
-			values1[i].put(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN, bidList.get(i).get(0));
-			values1[i].put(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN, bidList.get(i).get(1));
 			count++;
 		}
-		cr.bulkInsert(OrderBookProviderContract.CONTENT_URI, values1);}
+		
+		for(int j=0; j<bidInsertSize; j++){
+			values[i+j] = new ContentValues();
+			values[i+j].put(OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN, timeNow);
+			values[i+j].put(OrderBookProviderContract.ORDERBOOK_KIND_COLUMN, "BID");
+			values[i+j].put(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN, bidList.get(j).get(0));
+			values[i+j].put(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN, bidList.get(j).get(1));
+			count++;
+		}
+		cr.bulkInsert(OrderBookProviderContract.CONTENT_URI, values);}
 		return count;
 	}
 }

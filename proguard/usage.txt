@@ -4608,6 +4608,7 @@ edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider:
     private static final java.lang.String INTEGER_TYPE
     private static final java.lang.String CREATE_ORDERBOOKURL_TABLE_SQL
     84:85:public void close()
+    326:363:public int bulkInsertNonDelete(android.net.Uri,android.content.ContentValues[])
 edu.illinois.jchen93.bitstampwebsockettest.OrderBookProviderContract:
     public static final java.lang.String SCHEME
     public static final java.lang.String AUTHORITY

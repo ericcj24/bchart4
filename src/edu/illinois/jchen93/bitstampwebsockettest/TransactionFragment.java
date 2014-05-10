@@ -94,7 +94,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 		plot1.clear();
 		
 		int n = cursor.getCount();
-		//Log.i(TAG, "ploting transaction size is: "+n);
+		Log.i(TAG, "ploting transaction size is: "+n);
 		Number[] time = new Number[n];
 		Number[] y = new Number[n];
 		int i = 0;

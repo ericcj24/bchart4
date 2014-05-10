@@ -91,17 +91,21 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	     */
 	    switch (id) {
 	        case ORDERBOOK_LOADER:
+	        	//String buildUnionQuery (String[] subQueries, String sortOrder, String limit) 	
+	        		        	
 	            // Returns a new CursorLoader
 	        	String[] projection = {OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN,
 	        						OrderBookProviderContract.ORDERBOOK_KIND_COLUMN,
 	        						OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN,
 	        						OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN};
-	        	String sortOrder = OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN + " DESC" + " LIMIT " + 3000;
+	        	
+	        	String selection = null;
+	        	String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC "+"LIMIT "+3000;
 	            return new CursorLoader(
 	                        getActivity(),   // Parent activity context
 	                        OrderBookProviderContract.ORDERBOOKURL_TABLE_CONTENTURI, // Table to query
 	                        projection,      // Projection to return
-	                        null,            // No selection clause
+	                        selection,       // No selection clause
 	                        null,            // No selection arguments
 	                        sortOrder        // Default sort order
 	            			);
@@ -142,16 +146,18 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 		
 		//int nask = Integer.parseInt(ob.get(size-1).getPrice());
 		//int nbid = Integer.parseInt(ob.get(size-1).getAmount());
-		Log.i(TAG, String.valueOf(cursor.getCount()));
+		Log.i(TAG, "cursor returned size is: "+ String.valueOf(cursor.getCount()));
 		cursor.moveToFirst();	
 		while(cursor.isAfterLast() == false){
 			String type = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_KIND_COLUMN));
 			if(type.equals("ASK")){
+				//Log.i(TAG, "ask");
 				String temp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN));
 				x1.add(Double.parseDouble(temp));
 				y1.add(Double.parseDouble(cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN))));
 			}
 			if(type.equals("BID")){
+				//Log.i(TAG, "bid");
 				x2.add(Double.parseDouble(cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN))));
 				y2.add(Double.parseDouble(cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN))));
 			}

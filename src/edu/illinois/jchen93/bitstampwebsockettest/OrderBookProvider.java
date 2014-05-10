@@ -203,12 +203,18 @@ public class OrderBookProvider extends ContentProvider{
 
         SQLiteDatabase db = mHelper.getReadableDatabase();
 
+        String groupBy = null;//OrderBookProviderContract.ORDERBOOK_KIND_COLUMN;
+        String having = null;
+        
         // Does the query against a read-only version of the database
         Cursor returnCursor = db.query(
         	OrderBookProviderContract.ORDERBOOK_TABLE_NAME,
             projection,
             selection, 
-            selectionArgs, null, null, sortOrder);
+            selectionArgs,
+            groupBy, 
+            having, 
+            sortOrder);
 
         // Sets the ContentResolver to watch this content URI for data changes
         returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
@@ -284,9 +290,10 @@ public class OrderBookProvider extends ContentProvider{
 
         // Deletes all the existing rows in the table
         localSQLiteDatabase.delete(OrderBookProviderContract.ORDERBOOK_TABLE_NAME, null, null);
-
+        
         // Gets the size of the bulk insert
         int numOrderBook = insertValuesArray.length;
+        Log.i(TAG, "bulkinsert size is: "+String.valueOf(numOrderBook));
 
         // Inserts each ContentValues entry in the array as a row in the database
         for (int i = 0; i < numOrderBook; i++) {
@@ -313,6 +320,49 @@ public class OrderBookProvider extends ContentProvider{
         return numOrderBook;
     }
  
+    public int bulkInsertNonDelete(Uri uri, ContentValues[] insertValuesArray) {
+
+        // Gets a writeable database instance if one is not already cached
+        SQLiteDatabase localSQLiteDatabase = mHelper.getWritableDatabase();
+
+        /*
+         * Begins a transaction in "exclusive" mode. No other mutations can occur on the
+         * db until this transaction finishes.
+         */
+        localSQLiteDatabase.beginTransaction();
+
+        // Deletes all the existing rows in the table
+        // localSQLiteDatabase.delete(OrderBookProviderContract.ORDERBOOK_TABLE_NAME, null, null);
+
+        // Gets the size of the bulk insert
+        int numOrderBook = insertValuesArray.length;
+        Log.i(TAG, "bulkinsert size is: "+String.valueOf(numOrderBook));
+
+        // Inserts each ContentValues entry in the array as a row in the database
+        for (int i = 0; i < numOrderBook; i++) {
+
+            localSQLiteDatabase.insert(OrderBookProviderContract.ORDERBOOK_TABLE_NAME,
+                    null, insertValuesArray[i]);
+        }
+
+        // Reports that the transaction was successful and should not be backed out.
+        localSQLiteDatabase.setTransactionSuccessful();
+
+        // Ends the transaction and closes the current db instances
+        localSQLiteDatabase.endTransaction();
+        localSQLiteDatabase.close();
+
+        /*
+         * Notifies the current ContentResolver that the data associated with "uri" has
+         * changed.
+         */
+
+        getContext().getContentResolver().notifyChange(uri, null);
+
+        // The semantics of bulkInsert is to return the number of rows inserted.
+        return numOrderBook;
+    }
+    
     
     /**
      * Returns an UnsupportedOperationException if delete is called
