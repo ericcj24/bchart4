@@ -1206,8 +1206,6 @@ com.androidplot.ui.DynamicTableModel:
 com.androidplot.ui.FixedTableModel
 com.androidplot.ui.FixedTableModel$a
 com.androidplot.ui.FixedTableModel$b
-com.androidplot.ui.Formatter:
-    43:44:public com.androidplot.ui.Formatter configure(android.content.Context,int)
 com.androidplot.ui.LayoutManager:
     167:167:public boolean isDrawOutlinesEnabled()
     175:175:public android.graphics.Paint getOutlinePaint()
@@ -1271,6 +1269,7 @@ com.androidplot.ui.widget.Widget:
     201:201:public float getPaddingTop()
     206:207:public void setPaddingTop(float)
     211:211:public float getPaddingRight()
+    216:217:public void setPaddingRight(float)
     221:221:public float getPaddingBottom()
     226:227:public void setPaddingBottom(float)
     235:235:public float getMarginLeft()
@@ -1281,8 +1280,6 @@ com.androidplot.ui.widget.Widget:
     373:373:public android.graphics.Paint getBackgroundPaint()
     385:386:public void setClippingEnabled(boolean)
     393:394:public void setVisible(boolean)
-com.androidplot.util.Configurator:
-    259:279:public static void configure(android.content.Context,java.lang.Object,int)
 com.androidplot.util.FontUtils:
     22:22:public FontUtils()
 com.androidplot.util.ListOrganizer:
@@ -1299,7 +1296,6 @@ com.androidplot.util.PixelUtils:
     32:203:public PixelUtils()
     84:84:public static android.graphics.RectF sink(android.graphics.RectF)
     88:88:public static android.graphics.RectF nearestPixRect(float,float,float,float)
-    114:114:public static float spToPix(float)
     124:124:public static float fractionToPixH(float)
     134:134:public static float fractionToPixW(float)
 com.androidplot.util.PlotStatistics
@@ -1352,12 +1348,6 @@ com.androidplot.xy.LineAndPointFormatter:
     148:149:public void setLinePaint(android.graphics.Paint)
     156:157:public void setVertexPaint(android.graphics.Paint)
     164:165:public void setFillPaint(android.graphics.Paint)
-    180:181:public void setPointLabeler(com.androidplot.xy.PointLabeler)
-com.androidplot.xy.PointLabelFormatter:
-    34:35:public PointLabelFormatter()
-    38:40:public PointLabelFormatter(int)
-    49:53:public PointLabelFormatter(int,float,float)
-    60:61:public void setTextPaint(android.graphics.Paint)
 com.androidplot.xy.RectRegion:
     56:56:public boolean containsPoint(android.graphics.PointF)
     60:60:public boolean containsValue(java.lang.Number,java.lang.Number)
@@ -1406,7 +1396,6 @@ com.androidplot.xy.XValueMarker:
 com.androidplot.xy.XYGraphBounds
 com.androidplot.xy.XYGraphWidget:
     43:44:public void setRangeLabelOrientation(float)
-    51:52:public void setDomainLabelOrientation(float)
     178:178:public com.androidplot.util.ZIndexable getAxisValueLabelRegions()
     192:193:public void addAxisValueLabelRegion(com.androidplot.xy.RectRegion,com.androidplot.xy.AxisValueLabelFormatter)
     207:210:public void addDomainAxisValueLabelRegion(double,double,com.androidplot.xy.AxisValueLabelFormatter)
@@ -1428,9 +1417,13 @@ com.androidplot.xy.XYGraphWidget:
     883:883:public float getRangeLabelVerticalOffset()
     887:888:public void setRangeLabelVerticalOffset(float)
     895:896:public void setGridBackgroundPaint(android.graphics.Paint)
+    899:899:public android.graphics.Paint getDomainLabelPaint()
     903:904:public void setDomainLabelPaint(android.graphics.Paint)
+    907:907:public android.graphics.Paint getRangeLabelPaint()
     911:912:public void setRangeLabelPaint(android.graphics.Paint)
+    918:918:public android.graphics.Paint getDomainGridLinePaint()
     926:927:public void setDomainGridLinePaint(android.graphics.Paint)
+    933:933:public android.graphics.Paint getRangeGridLinePaint()
     940:940:public android.graphics.Paint getDomainSubGridLinePaint()
     948:949:public void setDomainSubGridLinePaint(android.graphics.Paint)
     956:957:public void setRangeGridLinePaint(android.graphics.Paint)
@@ -1449,7 +1442,9 @@ com.androidplot.xy.XYGraphWidget:
     1049:1050:public void setGridPaddingRight(float)
     1053:1053:public float getGridPaddingTop()
     1057:1061:public void setGridPadding(float,float,float,float)
+    1064:1064:public android.graphics.Paint getDomainOriginLinePaint()
     1068:1069:public void setDomainOriginLinePaint(android.graphics.Paint)
+    1072:1072:public android.graphics.Paint getRangeOriginLinePaint()
     1076:1077:public void setRangeOriginLinePaint(android.graphics.Paint)
     1080:1080:public android.graphics.Paint getDomainOriginLabelPaint()
     1084:1085:public void setDomainOriginLabelPaint(android.graphics.Paint)
@@ -4534,7 +4529,6 @@ com.pusher.client.AuthorizationFailureException:
     25:26:public AuthorizationFailureException(java.lang.String,java.lang.Exception)
 com.pusher.client.Authorizer
 com.pusher.client.Pusher:
-    100:100:public com.pusher.client.connection.Connection getConnection()
     200:200:public com.pusher.client.channel.PrivateChannel subscribePrivate(java.lang.String)
     214:219:public varargs com.pusher.client.channel.PrivateChannel subscribePrivate(java.lang.String,com.pusher.client.channel.PrivateChannelEventListener,java.lang.String[])
     230:230:public com.pusher.client.channel.PresenceChannel subscribePresence(java.lang.String)
@@ -4594,9 +4588,6 @@ com.pusher.client.util.Factory:
     95:95:public com.pusher.client.channel.impl.PresenceChannelImpl newPresenceChannel(com.pusher.client.connection.impl.InternalConnection,java.lang.String,com.pusher.client.Authorizer)
 com.pusher.client.util.HttpAuthorizer
 edu.illinois.jchen93.bitstampwebsockettest.BuildConfig
-edu.illinois.jchen93.bitstampwebsockettest.MainActivity:
-    239:239:private void prepareDatabase()
-edu.illinois.jchen93.bitstampwebsockettest.NetworkReceiver
 edu.illinois.jchen93.bitstampwebsockettest.OrderBookFragment:
     private static final int ORDERBOOK_LOADER
 edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider:
@@ -4634,6 +4625,7 @@ edu.illinois.jchen93.bitstampwebsockettest.R$layout
 edu.illinois.jchen93.bitstampwebsockettest.R$menu
 edu.illinois.jchen93.bitstampwebsockettest.R$string
 edu.illinois.jchen93.bitstampwebsockettest.R$style
+edu.illinois.jchen93.bitstampwebsockettest.R$xml
 edu.illinois.jchen93.bitstampwebsockettest.TickerFragment:
     private static final int TICKER_LOADER
 edu.illinois.jchen93.bitstampwebsockettest.TickerProvider:
