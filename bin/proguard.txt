@@ -5,21 +5,21 @@
 # view res/layout/fragment_orderbook_chart.xml #generated:17
 -keep class com.androidplot.xy.XYPlot { <init>(...); }
 
-# view AndroidManifest.xml #generated:28
+# view AndroidManifest.xml #generated:29
 -keep class edu.illinois.jchen93.bitstampwebsockettest.BWTUpdateService { <init>(...); }
 
-# view AndroidManifest.xml #generated:18
+# view AndroidManifest.xml #generated:19
 -keep class edu.illinois.jchen93.bitstampwebsockettest.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:41
+# view AndroidManifest.xml #generated:42
 -keep class edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider { <init>(...); }
 
-# view AndroidManifest.xml #generated:46
+# view AndroidManifest.xml #generated:47
 -keep class edu.illinois.jchen93.bitstampwebsockettest.TickerProvider { <init>(...); }
 
-# view AndroidManifest.xml #generated:32
+# view AndroidManifest.xml #generated:33
 -keep class edu.illinois.jchen93.bitstampwebsockettest.TickerUpdateService { <init>(...); }
 
-# view AndroidManifest.xml #generated:36
+# view AndroidManifest.xml #generated:37
 -keep class edu.illinois.jchen93.bitstampwebsockettest.TransactionProvider { <init>(...); }
 

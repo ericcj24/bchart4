@@ -2,7 +2,10 @@ package edu.illinois.jchen93.bitstampwebsockettest;
 
 import android.app.Service;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -20,9 +23,18 @@ public class BWTUpdateService extends Service{
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
+		Log.i(TAG, "onStartCommand");
 		String dataString = intent.getDataString();
 		int flag = Integer.parseInt(dataString);
-		//boolean isConnected = getActiveNetworkInfo().isConnected();
+		
+		ConnectivityManager cm =
+		        (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+		 
+		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+		boolean isConnected = activeNetwork != null &&
+		                      activeNetwork.isConnectedOrConnecting();
+		
+		if(isConnected){
 		
 		if(flag == 1){
 			Log.i(TAG, "too old, update entire database");
@@ -33,7 +45,8 @@ public class BWTUpdateService extends Service{
 		
 		Log.i(TAG, "starting orderbook and transaction");
 		th.secondCall();
-		oh.secondCall();	
+		oh.secondCall();
+		}
 		
 		return START_NOT_STICKY;
 		//START_STICKY
@@ -45,7 +58,7 @@ public class BWTUpdateService extends Service{
 		// Disconnect from the service (or become disconnected my network conditions)
 		th.disconnect();
 		oh.disconnect();
-		Log.i(TAG, "pusher disconnect");
+		
 		Log.i(TAG, "service stop");
 	}
 	

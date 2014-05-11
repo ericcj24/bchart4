@@ -34,6 +34,8 @@ public class OrderBookUpdateHelper{
 	public OrderBookUpdateHelper() {}
 	public OrderBookUpdateHelper(Context context){
 		this.context = context;
+		// Create a new Pusher instance
+		this.pusher = new Pusher("de504dc5763aeef9ff52");
 	}
 	
 	protected void firstCall(){
@@ -41,8 +43,7 @@ public class OrderBookUpdateHelper{
 	}
 	
 	protected void secondCall(){
-		// Create a new Pusher instance
-		pusher = new Pusher("de504dc5763aeef9ff52");
+		
 
 		pusher.connect(new ConnectionEventListener() {
 		    @Override
@@ -159,8 +160,10 @@ public class OrderBookUpdateHelper{
 	}
 	
 	protected void disconnect(){
+		boolean flag = (pusher.getConnection().getState() == ConnectionState.CONNECTED);
+		if(flag) {
 		pusher.disconnect();
-		Log.i(TAG, "orderbook close connection");
+		Log.i(TAG, "orderbook pusher close connection");}
 	}
 	
 	private class firstCall extends AsyncTask<Void, Void, OrderBook>{

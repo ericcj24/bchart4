@@ -6,7 +6,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -37,6 +36,8 @@ public class TransactionUpdateHelper{
 	
 	public TransactionUpdateHelper(Context context) {
 		this.context = context;
+		// Create a new Pusher instance
+		this.pusher = new Pusher("de504dc5763aeef9ff52");
 	}
 	
 	protected void firstCall(){
@@ -44,8 +45,7 @@ public class TransactionUpdateHelper{
 	}
 	
 	protected void secondCall(){
-		// Create a new Pusher instance
-		pusher = new Pusher("de504dc5763aeef9ff52");
+		
 
 		pusher.connect(new ConnectionEventListener() {
 		    @Override
@@ -86,8 +86,10 @@ public class TransactionUpdateHelper{
 	}
 	
 	protected void disconnect(){
+		boolean flag = (pusher.getConnection().getState() == ConnectionState.CONNECTED);
+		if(flag) {
 		pusher.disconnect();
-		Log.i(TAG, "transaction close connection");
+		Log.i(TAG, "transaction pusher close connection");}
 	}
 	
 	private class transactionFirstCall extends AsyncTask<Void, Void, ArrayList<Transaction>>{
