@@ -3,7 +3,9 @@ package edu.illinois.jchen93.bitstampwebsockettest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,7 +17,7 @@ public class NetworkReceiver extends BroadcastReceiver{
 	public void onReceive(Context context, Intent intent){
 		
 		boolean isNetworkDown = intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
-		
+				
 		if(isNetworkDown){
 			Log.i(TAG, "internet down");
 			CharSequence text = "No internet connection";
@@ -23,13 +25,14 @@ public class NetworkReceiver extends BroadcastReceiver{
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
 			
-		}else{
+		}
+		else{
 			Log.i(TAG, "internet up");
 			CharSequence text = "Internet connected";
 			int duration = Toast.LENGTH_LONG;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
-
+			
 		}
 	}
 }

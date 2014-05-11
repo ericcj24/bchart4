@@ -1,6 +1,7 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
 
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -8,6 +9,7 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -168,8 +170,8 @@ public class MainActivity extends FragmentActivity {
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart");
-        String CHOICE = "0";
         
+        String CHOICE = "0";
         boolean flag = isTooOlder();
         if(flag){
         	CHOICE = "1";
@@ -188,7 +190,8 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i(TAG, "onPause");        
+        Log.i(TAG, "onPause"); 
+        
     }
     
     @Override
@@ -207,6 +210,7 @@ public class MainActivity extends FragmentActivity {
         editor.putLong(getString(R.string.apptime_saved), newerTime);
         // Commit the edits!
         editor.commit();
+        
     }
     
     private boolean isTooOlder(){
@@ -215,7 +219,7 @@ public class MainActivity extends FragmentActivity {
     	SharedPreferences sharedpreferences = getPreferences(Context.MODE_PRIVATE);
     	long defaultTime = Long.parseLong(getResources().getString(R.string.apptime_default));
     	long olderTime = sharedpreferences.getLong(getString(R.string.apptime_saved), defaultTime);
-    	Log.i(TAG, "olderTime is: "+olderTime);
+    	Log.i(TAG, "new time is: "+newerTime+" olderTime is: "+olderTime);
     	long diffInHours = ( (newerTime - olderTime) / (1000*60*60));
     	Log.i(TAG, "diff is: "+diffInHours);
     	if(diffInHours>=1){
@@ -223,8 +227,7 @@ public class MainActivity extends FragmentActivity {
     		flag = true;
     		//prepareDatabase();
     	}
-    	return flag;
-    	
+    	return flag; 	
     }
     private void prepareDatabase(){
     	/**

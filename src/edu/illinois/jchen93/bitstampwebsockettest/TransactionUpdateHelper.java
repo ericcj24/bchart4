@@ -67,7 +67,7 @@ public class TransactionUpdateHelper{
 		channel.bind("trade", new SubscriptionEventListener() {
 		    @Override
 		    public void onEvent(String channel, String event, String data) {
-		        Log.i(TAG, "Received event with data: " + data);
+		        //Log.i(TAG, "Received event with data: " + data);
 		        log(data);
 		    }
 		    

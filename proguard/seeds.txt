@@ -293,8 +293,6 @@ edu.illinois.jchen93.bitstampwebsockettest.BWTUpdateService
 edu.illinois.jchen93.bitstampwebsockettest.BWTUpdateService: BWTUpdateService()
 edu.illinois.jchen93.bitstampwebsockettest.MainActivity
 edu.illinois.jchen93.bitstampwebsockettest.MainActivity: MainActivity()
-edu.illinois.jchen93.bitstampwebsockettest.NetworkReceiver
-edu.illinois.jchen93.bitstampwebsockettest.NetworkReceiver: NetworkReceiver()
 edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider
 edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider: OrderBookProvider()
 edu.illinois.jchen93.bitstampwebsockettest.R$array: int drawer_array

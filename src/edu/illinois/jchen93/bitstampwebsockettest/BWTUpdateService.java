@@ -15,12 +15,15 @@ public class BWTUpdateService extends Service{
 	@Override
 	public void onCreate (){
 		//listeners
+		Log.i(TAG, "service create");
 	}	
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
 		String dataString = intent.getDataString();
 		int flag = Integer.parseInt(dataString);
+		boolean isConnected = getActiveNetworkInfo().isConnected();
+		
 		if(flag == 1){
 			Log.i(TAG, "too old, update entire database");
 			th.firstCall();
@@ -43,6 +46,7 @@ public class BWTUpdateService extends Service{
 		th.disconnect();
 		oh.disconnect();
 		Log.i(TAG, "pusher disconnect");
+		Log.i(TAG, "service stop");
 	}
 	
 	@Override

@@ -4595,9 +4595,8 @@ com.pusher.client.util.Factory:
 com.pusher.client.util.HttpAuthorizer
 edu.illinois.jchen93.bitstampwebsockettest.BuildConfig
 edu.illinois.jchen93.bitstampwebsockettest.MainActivity:
-    237:237:private void prepareDatabase()
-edu.illinois.jchen93.bitstampwebsockettest.NetworkReceiver:
-    public static final java.lang.String TAG
+    239:239:private void prepareDatabase()
+edu.illinois.jchen93.bitstampwebsockettest.NetworkReceiver
 edu.illinois.jchen93.bitstampwebsockettest.OrderBookFragment:
     private static final int ORDERBOOK_LOADER
 edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider:
