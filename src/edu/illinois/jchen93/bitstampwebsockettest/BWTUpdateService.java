@@ -22,7 +22,7 @@ public class BWTUpdateService extends Service{
 	public int onStartCommand(Intent intent, int flags, int startId){
 		String dataString = intent.getDataString();
 		int flag = Integer.parseInt(dataString);
-		boolean isConnected = getActiveNetworkInfo().isConnected();
+		//boolean isConnected = getActiveNetworkInfo().isConnected();
 		
 		if(flag == 1){
 			Log.i(TAG, "too old, update entire database");

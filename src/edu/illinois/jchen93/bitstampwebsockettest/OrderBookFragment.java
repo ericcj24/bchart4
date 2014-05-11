@@ -100,7 +100,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	        						OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN};
 	        	
 	        	String selection = null;
-	        	String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC "+"LIMIT "+3000;
+	        	String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC "+"LIMIT "+800;
 	            return new CursorLoader(
 	                        getActivity(),   // Parent activity context
 	                        OrderBookProviderContract.ORDERBOOKURL_TABLE_CONTENTURI, // Table to query
@@ -143,9 +143,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 		List<Double> y1 = new ArrayList<Double>();
 		List<Double> x2 = new ArrayList<Double>();
 		List<Double> y2 = new ArrayList<Double>();
-		
-		//int nask = Integer.parseInt(ob.get(size-1).getPrice());
-		//int nbid = Integer.parseInt(ob.get(size-1).getAmount());
+
 		Log.i(TAG, "cursor returned size is: "+ String.valueOf(cursor.getCount()));
 		cursor.moveToFirst();	
 		while(cursor.isAfterLast() == false){

@@ -1,15 +1,13 @@
 package edu.illinois.jchen93.bitstampwebsockettest;
 
 
-import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -92,7 +90,6 @@ public class MainActivity extends FragmentActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectItem(position);
-
         }
     }
 
@@ -132,8 +129,7 @@ public class MainActivity extends FragmentActivity {
 		    //newFragment.setArguments(args);
 		    FragmentManager fragmentManager = getFragmentManager();
 		    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-		}
-    	
+		}    	
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
@@ -172,26 +168,25 @@ public class MainActivity extends FragmentActivity {
         Log.i(TAG, "onStart");
         
         String CHOICE = "0";
-        boolean flag = isTooOlder();
+        boolean flag = isTooOld();
         if(flag){
         	CHOICE = "1";
         }
         Intent intent = new Intent(this, BWTUpdateService.class);
         intent.setData(Uri.parse(CHOICE));
-        startService(intent);
+        startService(intent);     
     }
     
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i(TAG, "onResume");     
+        Log.i(TAG, "onResume");    
     }
     
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i(TAG, "onPause"); 
-        
+        Log.i(TAG, "onPause");
     }
     
     @Override
@@ -213,7 +208,7 @@ public class MainActivity extends FragmentActivity {
         
     }
     
-    private boolean isTooOlder(){
+    private boolean isTooOld(){
     	boolean flag = false;
     	long newerTime = System.currentTimeMillis();
     	SharedPreferences sharedpreferences = getPreferences(Context.MODE_PRIVATE);
@@ -225,18 +220,8 @@ public class MainActivity extends FragmentActivity {
     	if(diffInHours>=1){
     		Log.i(TAG, "bigger than 2 hours, reloading database with new data");
     		flag = true;
-    		//prepareDatabase();
     	}
     	return flag; 	
-    }
-    private void prepareDatabase(){
-    	/**
-        ProgressDialog progress = new ProgressDialog(this);
-		progress.setTitle("Loading");
-		progress.setMessage("Wait while loading...");
-		progress.show();
-        progress.dismiss();
-        */
     }
 
 }
