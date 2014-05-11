@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.androidplot.xy.LineAndPointFormatter;
+import com.androidplot.xy.PointLabelFormatter;
 import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
@@ -100,7 +101,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	        						OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN};
 	        	
 	        	String selection = null;
-	        	String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC "+"LIMIT "+800;
+	        	String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC "+"LIMIT "+600;
 	            return new CursorLoader(
 	                        getActivity(),   // Parent activity context
 	                        OrderBookProviderContract.ORDERBOOKURL_TABLE_CONTENTURI, // Table to query
@@ -145,49 +146,63 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 		List<Double> y2 = new ArrayList<Double>();
 
 		Log.i(TAG, "cursor returned size is: "+ String.valueOf(cursor.getCount()));
+		int countAsk = 0;
+		int countBid = 0;
 		cursor.moveToFirst();	
 		while(cursor.isAfterLast() == false){
 			String type = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_KIND_COLUMN));
 			if(type.equals("ASK")){
 				//Log.i(TAG, "ask");
-				String temp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN));
-				x1.add(Double.parseDouble(temp));
-				y1.add(Double.parseDouble(cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN))));
+				String priceTemp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN));
+				String amountTemp =  cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN));
+				double price = Double.parseDouble(priceTemp);
+				double amount = Double.parseDouble(amountTemp);
+				if(amount<5){
+					x1.add(price);
+					y1.add(amount);
+					countAsk++;
+				}
 			}
 			if(type.equals("BID")){
 				//Log.i(TAG, "bid");
-				x2.add(Double.parseDouble(cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN))));
-				y2.add(Double.parseDouble(cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN))));
+				String priceTemp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN));
+				String amountTemp =  cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN));
+				double price = Double.parseDouble(priceTemp);
+				double amount = Double.parseDouble(amountTemp);
+				if(amount < 5){
+					x2.add(price);
+					y2.add(amount);
+					countBid++;
+				}
 			}
 			cursor.moveToNext();
 		}
+		Log.i(TAG, "ob plot ask size is: "+countAsk);
+		Log.i(TAG, "ob plot bid size is: "+countBid);
 
 		XYSeries series1 = new SimpleXYSeries(x1,y1,"Asks");
 		XYSeries series2 = new SimpleXYSeries(x2,y2,"Bids");
 		
-		plot1.getGraphWidget().getGridBackgroundPaint().setColor(Color.BLACK);
-        plot1.getGraphWidget().getDomainGridLinePaint().setColor(Color.WHITE);
-        plot1.getGraphWidget().getDomainGridLinePaint().
-                setPathEffect(new DashPathEffect(new float[]{1, 1}, 1));
-        plot1.getGraphWidget().getRangeGridLinePaint().setColor(Color.WHITE);
-        plot1.getGraphWidget().getRangeGridLinePaint().
-                setPathEffect(new DashPathEffect(new float[]{1, 1}, 1));
-        plot1.getGraphWidget().getDomainOriginLinePaint().setColor(Color.BLACK);
-        plot1.getGraphWidget().getRangeOriginLinePaint().setColor(Color.BLACK);
-
-        // Create a formatter to use for drawing a series using LineAndPointRenderer:
-        LineAndPointFormatter format1 = new LineAndPointFormatter(
-                Color.RED,                   // line color
-                null,        				// point color
-                Color.RED, null);                // fill color
-        LineAndPointFormatter format2 = new LineAndPointFormatter(
-                Color.YELLOW,                   // line color
-                null,          					 // point color
-                Color.YELLOW, null);             // fill color
-        
-        plot1.getGraphWidget().setPaddingRight(2);
-        plot1.addSeries(series1, format1);
-        plot1.addSeries(series2, format2);
+		// Create a formatter to use for drawing a series using LineAndPointRenderer
+        // and configure it from xml:
+        LineAndPointFormatter series1Format = new LineAndPointFormatter();
+        series1Format.setPointLabelFormatter(new PointLabelFormatter());
+        series1Format.configure(getActivity().getApplicationContext(),
+                R.xml.line_point_formatter_with_plf1);
+ 
+        // add a new series' to the xyplot:
+        plot1.addSeries(series1, series1Format);
+ 
+        // same as above:
+        LineAndPointFormatter series2Format = new LineAndPointFormatter();
+        series2Format.setPointLabelFormatter(new PointLabelFormatter());
+        series2Format.configure(getActivity().getApplicationContext(),
+                R.xml.line_point_formatter_with_plf2);
+        plot1.addSeries(series2, series2Format);
+ 
+        // reduce the number of range labels
+        plot1.setTicksPerRangeLabel(3);
+        plot1.getGraphWidget().setDomainLabelOrientation(-45);
 
         // customize our domain/range labels
         plot1.setDomainLabel("Price");

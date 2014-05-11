@@ -46,7 +46,7 @@ public class TransactionUpdateHelper{
 	
 	protected void secondCall(){
 		
-
+		// pusher was initialized upon the creation of this class
 		pusher.connect(new ConnectionEventListener() {
 		    @Override
 		    public void onConnectionStateChange(ConnectionStateChange change) {
@@ -86,10 +86,11 @@ public class TransactionUpdateHelper{
 	}
 	
 	protected void disconnect(){
-		boolean flag = (pusher.getConnection().getState() == ConnectionState.CONNECTED);
-		if(flag) {
-		pusher.disconnect();
-		Log.i(TAG, "transaction pusher close connection");}
+		boolean isConnected = (pusher.getConnection().getState() == ConnectionState.CONNECTED);
+		if(isConnected) {
+			pusher.disconnect();
+			Log.i(TAG, "transaction pusher close connection");
+		}
 	}
 	
 	private class transactionFirstCall extends AsyncTask<Void, Void, ArrayList<Transaction>>{

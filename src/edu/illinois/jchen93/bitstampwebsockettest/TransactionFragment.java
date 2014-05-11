@@ -10,6 +10,9 @@ import java.util.Date;
 import com.androidplot.ui.SizeLayoutType;
 import com.androidplot.ui.SizeMetrics;
 import com.androidplot.xy.LineAndPointFormatter;
+import com.androidplot.xy.LineAndPointRenderer;
+import com.androidplot.xy.PointLabelFormatter;
+import com.androidplot.xy.PointLabeler;
 import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
@@ -109,30 +112,25 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 
 		XYSeries series = new SimpleXYSeries(Arrays.asList(time),Arrays.asList(y),"Transactions");
 		
-		plot1.getGraphWidget().getGridBackgroundPaint().setColor(Color.BLACK);
-        plot1.getGraphWidget().getDomainGridLinePaint().setColor(Color.WHITE);
-        plot1.getGraphWidget().getDomainGridLinePaint().
-                setPathEffect(new DashPathEffect(new float[]{1, 1}, 1));
-        plot1.getGraphWidget().getRangeGridLinePaint().setColor(Color.WHITE);
-        plot1.getGraphWidget().getRangeGridLinePaint().
-                setPathEffect(new DashPathEffect(new float[]{1, 1}, 1));
-        plot1.getGraphWidget().getDomainOriginLinePaint().setColor(Color.BLACK);
-        plot1.getGraphWidget().getRangeOriginLinePaint().setColor(Color.BLACK);
-
-        // Create a formatter to use for drawing a series using LineAndPointRenderer:
-        LineAndPointFormatter format = new LineAndPointFormatter(
-                Color.RED,                  // line color
-                Color.rgb(0, 100, 0),       // point color
-                null, null);                // fill color
+        LineAndPointFormatter seriesFormat = new LineAndPointFormatter();
+        seriesFormat.setPointLabelFormatter(new PointLabelFormatter());
+        seriesFormat.configure(getActivity().getApplicationContext(),
+                R.xml.line_point_formatter);
+        seriesFormat.setPointLabeler(new PointLabeler() {
+    	    @Override
+    	    public String getLabel(XYSeries series, int index) {
+    	        return index % 10 == 0 ? series.getY(index) + "" : "";
+    	    }
+    	});
+        plot1.addSeries(series, seriesFormat);
+ 
+        // reduce the number of range labels
+        plot1.setTicksPerRangeLabel(3);
+        plot1.getGraphWidget().setDomainLabelOrientation(-45);
+		
         
-        plot1.getGraphWidget().setPaddingRight(2);
-        plot1.addSeries(series, format);
-
-        // draw a domain tick for each time:
-        //plot1.setDomainStep(XYStepMode.SUBDIVIDE, time.length/400);
-        plot1.setDomainStepValue(10);
-        plot1.setRangeStepValue(9);
-
+    	
+        
         // customize our domain/range labels
         plot1.setDomainLabel("Time");
         plot1.setRangeLabel("Price");      
@@ -161,17 +159,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
             }
         });
        
-        plot1.getGraphWidget().getDomainLabelPaint().setTextSize(15);
-        plot1.getGraphWidget().getRangeLabelPaint().setTextSize(15);
-        //plot1.getGraphWidget().setMarginTop(18);
-        //plot1.getGraphWidget().setMarginRight(10);
-        //plot1.getGraphWidget().setDomainLabelOrientation(-20);
-        //plot1.getGraphWidget().setRangeLabelOrientation(20);
-        //plot1.getGraphWidget().setPaddingRight(25);
-        //plot1.getGraphWidget().setPaddingTop(8);
         
-        plot1.getGraphWidget().setSize(new SizeMetrics(70, SizeLayoutType.FILL, 50, SizeLayoutType.FILL));
-
         plot1.redraw();
         plot1.setVisibility(1);
         plot1.bringToFront();

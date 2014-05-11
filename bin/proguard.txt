@@ -1,8 +1,8 @@
 # view res/layout/activity_main.xml #generated:3
 -keep class android.support.v4.widget.DrawerLayout { <init>(...); }
 
-# view res/layout/fragment_chart.xml #generated:17
-# view res/layout/fragment_orderbook_chart.xml #generated:17
+# view res/layout/fragment_chart.xml #generated:26
+# view res/layout/fragment_orderbook_chart.xml #generated:25
 -keep class com.androidplot.xy.XYPlot { <init>(...); }
 
 # view AndroidManifest.xml #generated:29

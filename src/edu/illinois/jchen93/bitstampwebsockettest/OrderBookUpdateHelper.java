@@ -44,7 +44,7 @@ public class OrderBookUpdateHelper{
 	
 	protected void secondCall(){
 		
-
+		// pusher was initialized upon creation of this class
 		pusher.connect(new ConnectionEventListener() {
 		    @Override
 		    public void onConnectionStateChange(ConnectionStateChange change) {
@@ -160,10 +160,11 @@ public class OrderBookUpdateHelper{
 	}
 	
 	protected void disconnect(){
-		boolean flag = (pusher.getConnection().getState() == ConnectionState.CONNECTED);
-		if(flag) {
-		pusher.disconnect();
-		Log.i(TAG, "orderbook pusher close connection");}
+		boolean isConnected = (pusher.getConnection().getState() == ConnectionState.CONNECTED);
+		if(isConnected) {
+			pusher.disconnect();
+			Log.i(TAG, "orderbook pusher close connection");
+		}
 	}
 	
 	private class firstCall extends AsyncTask<Void, Void, OrderBook>{
@@ -223,10 +224,11 @@ public class OrderBookUpdateHelper{
 		Log.i(TAG, " http ask size is: "+ askSize);
 		Log.i(TAG, " http bid size is: "+ bidSize);
 		
+		// manually taking first 240+240 results
 		ArrayList<ArrayList<String>> askList = orderBook.getAsks();
-		int askInsertSize = askSize/5;
+		int askInsertSize = 240;
 		ArrayList<ArrayList<String>> bidList = orderBook.getBids();
-		int bidInsertSize = bidSize/5;
+		int bidInsertSize = 240;
 		
 		ContentValues[] values = new ContentValues[askInsertSize+bidInsertSize];
 		int i=0;
