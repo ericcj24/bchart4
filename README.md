@@ -4,6 +4,6 @@ screenshot:
 
 ![screenshot2](/screenshots/Screenshot_transaction.png)
 
-![screenshot2](/screenshots/Screenshot_order_book.png)
+![screenshot3](/screenshots/Screenshot_order_book.png)
 
-![screenshot2](/screenshots/Screenshot_ticker.png)
+![screenshot4](/screenshots/Screenshot_ticker.png)
