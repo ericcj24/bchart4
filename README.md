@@ -6,4 +6,8 @@ screenshot:
 
 ![screenshot](/screenshots/Screenshot_order_book.png)
 
-https://play.google.com/store/apps/details?id=edu.illinois.jchen93.bitstampwebsockettest![img](/screenshots/google_play_store.png)
+
+<a href="https://play.google.com/store/apps/details?id=edu.illinois.jchen93.bitstampwebsockettest" target="_blank">
+  <img alt="Get it on Google Play"
+       src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
+</a>
