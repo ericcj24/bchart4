@@ -6,20 +6,20 @@
 -keep class com.androidplot.xy.XYPlot { <init>(...); }
 
 # view AndroidManifest.xml #generated:29
--keep class edu.illinois.jchen93.bitstampwebsockettest.BWTUpdateService { <init>(...); }
+-keep class edu.illinois.jchen93.bchart4.BWTUpdateService { <init>(...); }
 
 # view AndroidManifest.xml #generated:19
--keep class edu.illinois.jchen93.bitstampwebsockettest.MainActivity { <init>(...); }
+-keep class edu.illinois.jchen93.bchart4.MainActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:42
--keep class edu.illinois.jchen93.bitstampwebsockettest.OrderBookProvider { <init>(...); }
+-keep class edu.illinois.jchen93.bchart4.OrderBookProvider { <init>(...); }
 
 # view AndroidManifest.xml #generated:47
--keep class edu.illinois.jchen93.bitstampwebsockettest.TickerProvider { <init>(...); }
+-keep class edu.illinois.jchen93.bchart4.TickerProvider { <init>(...); }
 
 # view AndroidManifest.xml #generated:33
--keep class edu.illinois.jchen93.bitstampwebsockettest.TickerUpdateService { <init>(...); }
+-keep class edu.illinois.jchen93.bchart4.TickerUpdateService { <init>(...); }
 
 # view AndroidManifest.xml #generated:37
--keep class edu.illinois.jchen93.bitstampwebsockettest.TransactionProvider { <init>(...); }
+-keep class edu.illinois.jchen93.bchart4.TransactionProvider { <init>(...); }
 

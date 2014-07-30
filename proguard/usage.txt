@@ -10,7 +10,6 @@ android.support.v4.app.ActionBarDrawerToggle:
     private static final int ID_HOME
     246:255:public void setDrawerIndicatorEnabled(boolean)
     262:262:public boolean isDrawerIndicatorEnabled()
-    289:297:public boolean onOptionsItemSelected(android.view.MenuItem)
 android.support.v4.app.ActionBarDrawerToggleHoneycomb:
     private static final java.lang.String TAG
     39:92:ActionBarDrawerToggleHoneycomb()
@@ -1008,9 +1007,6 @@ android.support.v4.widget.DrawerLayout:
     394:400:public void setDrawerLockMode(int,android.view.View)
     410:417:public int getDrawerLockMode(int)
     540:549:void moveDrawerToOffset(android.view.View,float)
-    1044:1050:public void openDrawer(int)
-    1084:1090:public void closeDrawer(int)
-    1150:1154:public boolean isDrawerVisible(int)
 android.support.v4.widget.DrawerLayout$LayoutParams:
     1509:1511:public DrawerLayout$LayoutParams(int,int,int)
 android.support.v4.widget.DrawerLayout$SimpleDrawerListener
