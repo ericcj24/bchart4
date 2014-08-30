@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">bchart4</string>
+
+    <string-array name="drawer_array">
+        <item>Transactions</item>
+        <item>Order Book</item>
+        <item>Ticker</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="timestamp">Time: </string>
+    <string name="high">High: </string>
+    <string name="low">Low: </string>
+    <string name="last">Last: </string>
+    <string name="bid">Bid: </string>
+    <string name="ask">Ask: </string>
+    <string name="vwap">Vwap: </string>
+    <string name="volume">Volume: </string>
+    <string name = "apptime_default">0</string>
+    <string name = "apptime_saved">0</string>
+    
+</resources>
