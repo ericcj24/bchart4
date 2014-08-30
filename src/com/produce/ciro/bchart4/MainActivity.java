@@ -1,6 +1,5 @@
 package com.produce.ciro.bchart4;
 
-import edu.illinois.jchen93.bchart4.R;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;

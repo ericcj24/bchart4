@@ -26,8 +26,6 @@ import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
 
-import edu.illinois.jchen93.bchart4.R;
-
 public class TransactionFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
 	private static final String TAG = TransactionFragment.class.getSimpleName();
