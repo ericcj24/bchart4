@@ -1,5 +1,7 @@
 package com.produce.ciro.bchart4;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 
 	// Identifies a particular Loader being used in this component
 	private static final int ORDERBOOK_LOADER = 0;
+	
+	private static final NumberFormat _formatter = new DecimalFormat("#0.00");
 
 	public OrderBookFragment() {
 		// Empty constructor required for fragment subclasses
@@ -147,7 +151,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 				String priceTemp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN));
 				String amountTemp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN));
 				double price = Double.parseDouble(priceTemp);
-				double amount = Double.parseDouble(amountTemp);
+				double amount = Double.parseDouble(_formatter.format(Double.parseDouble(amountTemp)));
 				if (amount < 5) {
 					x1.add(price);
 					y1.add(amount);
@@ -179,6 +183,8 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 		LineAndPointFormatter series1Format = new LineAndPointFormatter();
 		series1Format.setPointLabelFormatter(new PointLabelFormatter());
 		series1Format.configure(getActivity().getApplicationContext(), R.xml.line_point_formatter_with_plf1);
+		// set line to transparent
+		series1Format.getLinePaint().setAlpha(0);
 
 		// add a new series' to the xyplot:
 		plot1.addSeries(series1, series1Format);
@@ -187,6 +193,8 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 		LineAndPointFormatter series2Format = new LineAndPointFormatter();
 		series2Format.setPointLabelFormatter(new PointLabelFormatter());
 		series2Format.configure(getActivity().getApplicationContext(), R.xml.line_point_formatter_with_plf2);
+		// set line to transparent
+		series2Format.getLinePaint().setAlpha(0);
 		plot1.addSeries(series2, series2Format);
 
 		// reduce the number of range labels

@@ -103,7 +103,7 @@ public class OrderBookUpdateHelper {
 			try {
 				ob = mapper.readValue(msg, Orderbook1.class);
 				Log.i(TAG, " websocket ask price is: " + ob.getAsks().get(0).get(0));
-				Log.i(TAG, " websocket ask amoutn is: " + ob.getAsks().get(0).get(1));
+				Log.i(TAG, " websocket ask amount is: " + ob.getAsks().get(0).get(1));
 
 				addNewSingleOrderbook(ob);
 			}
