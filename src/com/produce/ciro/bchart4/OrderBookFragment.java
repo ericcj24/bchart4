@@ -152,23 +152,23 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 				String amountTemp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN));
 				double price = Double.parseDouble(priceTemp);
 				double amount = Double.parseDouble(_formatter.format(Double.parseDouble(amountTemp)));
-				if (amount < 5) {
+				//if (amount < 5) {
 					x1.add(price);
 					y1.add(amount);
 					countAsk++;
-				}
+				//}
 			}
 			if (type.equals("BID")) {
 				// Log.i(TAG, "bid");
 				String priceTemp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_PRICE_COLUMN));
 				String amountTemp = cursor.getString(cursor.getColumnIndex(OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN));
 				double price = Double.parseDouble(priceTemp);
-				double amount = Double.parseDouble(amountTemp);
-				if (amount < 5) {
+				double amount = Double.parseDouble(_formatter.format(Double.parseDouble(amountTemp)));
+				//if (amount < 5) {
 					x2.add(price);
 					y2.add(amount);
 					countBid++;
-				}
+				//}
 			}
 			cursor.moveToNext();
 		}

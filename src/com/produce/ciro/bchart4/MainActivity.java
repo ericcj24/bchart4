@@ -32,6 +32,13 @@ public class MainActivity extends FragmentActivity {
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	private String[] mMenuTitles;
+	
+	// try with cache fragments
+	private Fragment _fragment1;
+	private Fragment _fragment2;
+	private Fragment _fragment3;
+	
+	private FragmentManager _fragmentManager = getFragmentManager();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,28 +106,33 @@ public class MainActivity extends FragmentActivity {
 		String chart = getResources().getStringArray(R.array.drawer_array)[position];
 		Log.i(TAG, chart);
 		if (position == 0) {
-			Fragment fragment = new TransactionFragment();
+			if (_fragment1 == null) {
+				_fragment1 = new TransactionFragment();
+			}
 			// Bundle args = new Bundle();
 			// args.putInt(TransactionFragment.ARG_POSITION, position);
 			// newFragment.setArguments(args);
-			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+			_fragmentManager.beginTransaction().replace(R.id.content_frame, _fragment1).commit();
 		}
 		else if (position == 1) {
-			Fragment fragment = new OrderBookFragment();
+			if (_fragment2 == null) {
+				_fragment2 = new OrderBookFragment();
+			}
+
 			// Bundle args = new Bundle();
 			// args.putInt(TransactionFragment.ARG_POSITION, position);
 			// newFragment.setArguments(args);
-			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+			_fragmentManager.beginTransaction().replace(R.id.content_frame, _fragment2).commit();
 		}
 		else if (position == 2) {
-			Fragment fragment = new TickerFragment();
+			if (_fragment3 == null) {
+				_fragment3 = new TickerFragment();
+			}
+
 			// Bundle args = new Bundle();
 			// args.putInt(TransactionFragment.ARG_POSITION, position);
 			// newFragment.setArguments(args);
-			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+			_fragmentManager.beginTransaction().replace(R.id.content_frame, _fragment3).commit();
 		}
 
 		// update selected item and title, then close the drawer
@@ -238,7 +250,6 @@ public class MainActivity extends FragmentActivity {
 		}
 		// Handle action buttons
 		switch (item.getItemId()) {
-
 			default:
 				return super.onOptionsItemSelected(item);
 		}
