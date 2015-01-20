@@ -107,7 +107,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 				        OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN };
 
 				String selection = null;
-				String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC " + "LIMIT " + 500;
+				String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC " + "LIMIT " + 300;
 				return new CursorLoader(getActivity(), // Parent activity context
 				        OrderBookProviderContract.ORDERBOOKURL_TABLE_CONTENTURI, // Table to query
 				        projection, // Projection to return
