@@ -32,6 +32,10 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 
 	// Identifies a particular Loader being used in this component
 	private static final int TRANSACTION_LOADER = 0;
+	
+	private XYPlot _plot1;
+	
+	private XYSeries _series;
 
 	public TransactionFragment() {
 		// Empty constructor required for fragment subclasses
@@ -71,18 +75,21 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 	@Override
 	public void onPause() {
 		super.onPause();
+		_plot1.setVisibility(TRIM_MEMORY_BACKGROUND);
 		Log.i(TAG, "on pause");
 	}
 
 	@Override
 	public void onDetach() {
 		super.onDetach();
+		_plot1.clear();
+		_plot1 = null;
 		Log.i(TAG, "on detach");
 	}
 
 	private void plotTransaction(Cursor cursor) {
-		XYPlot plot1 = (XYPlot) getView().findViewById(R.id.chart);
-		plot1.clear();
+		_plot1 = (XYPlot) getView().findViewById(R.id.chart);
+		_plot1.clear();
 
 		int n = cursor.getCount();
 		Log.i(TAG, "ploting transaction size is: " + n);
@@ -97,7 +104,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 			cursor.moveToNext();
 		}
 
-		XYSeries series = new SimpleXYSeries(Arrays.asList(time), Arrays.asList(y), "Transactions");
+		_series = new SimpleXYSeries(Arrays.asList(time), Arrays.asList(y), "Transactions");
 
 		LineAndPointFormatter seriesFormat = new LineAndPointFormatter();
 		seriesFormat.setPointLabelFormatter(new PointLabelFormatter());
@@ -108,17 +115,17 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 				return index % 10 == 0 ? series.getY(index) + "" : "";
 			}
 		});
-		plot1.addSeries(series, seriesFormat);
+		_plot1.addSeries(_series, seriesFormat);
 
 		// reduce the number of range labels
-		plot1.setTicksPerRangeLabel(3);
-		plot1.getGraphWidget().setDomainLabelOrientation(-45);
+		_plot1.setTicksPerRangeLabel(3);
+		_plot1.getGraphWidget().setDomainLabelOrientation(-45);
 
 		// customize our domain/range labels
-		plot1.setDomainLabel("Time");
-		plot1.setRangeLabel("Price");
+		_plot1.setDomainLabel("Time");
+		_plot1.setRangeLabel("Price");
 
-		plot1.setDomainValueFormat(new Format() {
+		_plot1.setDomainValueFormat(new Format() {
 
 			// create a simple date format that draws on the year portion of our timestamp.
 			// see http://download.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
@@ -142,9 +149,9 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 			}
 		});
 
-		plot1.redraw();
-		plot1.setVisibility(1);
-		plot1.bringToFront();
+		_plot1.redraw();
+		_plot1.setVisibility(1);
+		_plot1.bringToFront();
 	}
 
 	@Override
@@ -162,7 +169,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 				String[] projection = { TransactionProviderContract.TRANSACTION_DATE_COLUMN,
 				        TransactionProviderContract.TRANSACTION_TID_COLUMN, TransactionProviderContract.TRANSACTION_PRICE_COLUMN,
 				        TransactionProviderContract.TRANSACTION_AMOUNT_COLUMN };
-				String sortOrder = TransactionProviderContract.TRANSACTION_TID_COLUMN + " DESC" + " LIMIT " + 2000;
+				String sortOrder = TransactionProviderContract.TRANSACTION_TID_COLUMN + " DESC" + " LIMIT " + 1000;
 				return new CursorLoader(getActivity(), // Parent activity context
 				        TransactionProviderContract.TRANSACTIONURL_TABLE_CONTENTURI, // Table to query
 				        projection, // Projection to return

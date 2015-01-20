@@ -24,7 +24,7 @@ public class TickerFragment extends Fragment implements LoaderManager.LoaderCall
 	private static final String TAG = TickerFragment.class.getSimpleName();
 
 	// Identifies a particular Loader being used in this component
-	private static final int TICKER_LOADER = 0;
+	private static final int TICKER_LOADER = 2;
 	private SimpleCursorAdapter mAdapter;
 	private AlarmManager alarmMgr;
 	private int REQUEST_CODE = 103;

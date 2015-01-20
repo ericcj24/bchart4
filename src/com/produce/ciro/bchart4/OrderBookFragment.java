@@ -29,7 +29,13 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	private final static String TAG = OrderBookFragment.class.getSimpleName();
 
 	// Identifies a particular Loader being used in this component
-	private static final int ORDERBOOK_LOADER = 0;
+	private static final int ORDERBOOK_LOADER = 1;
+	
+	private XYPlot _plot1;
+	
+	private XYSeries _series1;
+	
+	private XYSeries _series2;
 	
 	private static final NumberFormat _formatter = new DecimalFormat("#0.00");
 
@@ -71,12 +77,15 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	@Override
 	public void onPause() {
 		super.onPause();
+		_plot1.setVisibility(TRIM_MEMORY_BACKGROUND);
 		Log.i(TAG, "on pause");
 	}
 
 	@Override
 	public void onDetach() {
 		super.onDetach();
+		_plot1.clear();
+		_plot1 = null;
 		Log.i(TAG, "on detach");
 	}
 
@@ -99,7 +108,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 				        OrderBookProviderContract.ORDERBOOK_AMOUNT_COLUMN };
 
 				String selection = null;
-				String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC " + "LIMIT " + 600;
+				String sortOrder = OrderBookProviderContract.ORDERBOOK_TIMESTAMP_COLUMN + " DESC " + "LIMIT " + 500;
 				return new CursorLoader(getActivity(), // Parent activity context
 				        OrderBookProviderContract.ORDERBOOKURL_TABLE_CONTENTURI, // Table to query
 				        projection, // Projection to return
@@ -132,8 +141,8 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	}
 
 	private void plotOrderBook(Cursor cursor) {
-		XYPlot plot1 = (XYPlot) getView().findViewById(R.id.orderbookchart);
-		plot1.clear();
+		_plot1 = (XYPlot) getView().findViewById(R.id.orderbookchart);
+		_plot1.clear();
 
 		List<Double> x1 = new ArrayList<Double>();
 		List<Double> y1 = new ArrayList<Double>();
@@ -175,8 +184,8 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 		Log.i(TAG, "ob plot ask size is: " + countAsk);
 		Log.i(TAG, "ob plot bid size is: " + countBid);
 
-		XYSeries series1 = new SimpleXYSeries(x1, y1, "Asks");
-		XYSeries series2 = new SimpleXYSeries(x2, y2, "Bids");
+		_series1 = new SimpleXYSeries(x1, y1, "Asks");
+		_series2 = new SimpleXYSeries(x2, y2, "Bids");
 
 		// Create a formatter to use for drawing a series using LineAndPointRenderer
 		// and configure it from xml:
@@ -187,7 +196,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 		series1Format.getLinePaint().setAlpha(0);
 
 		// add a new series' to the xyplot:
-		plot1.addSeries(series1, series1Format);
+		_plot1.addSeries(_series1, series1Format);
 
 		// same as above:
 		LineAndPointFormatter series2Format = new LineAndPointFormatter();
@@ -195,18 +204,18 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 		series2Format.configure(getActivity().getApplicationContext(), R.xml.line_point_formatter_with_plf2);
 		// set line to transparent
 		series2Format.getLinePaint().setAlpha(0);
-		plot1.addSeries(series2, series2Format);
+		_plot1.addSeries(_series2, series2Format);
 
 		// reduce the number of range labels
-		plot1.setTicksPerRangeLabel(3);
-		plot1.getGraphWidget().setDomainLabelOrientation(-45);
+		_plot1.setTicksPerRangeLabel(3);
+		_plot1.getGraphWidget().setDomainLabelOrientation(-45);
 
 		// customize our domain/range labels
-		plot1.setDomainLabel("Price");
-		plot1.setRangeLabel("Amount");
+		_plot1.setDomainLabel("Price");
+		_plot1.setRangeLabel("Amount");
 
-		plot1.redraw();
-		plot1.setVisibility(1);
-		plot1.bringToFront();
+		_plot1.redraw();
+		_plot1.setVisibility(1);
+		_plot1.bringToFront();
 	}
 }
