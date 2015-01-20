@@ -38,7 +38,7 @@ public class MainActivity extends FragmentActivity {
 	private Fragment _fragment2;
 	private Fragment _fragment3;
 	
-	private FragmentManager _fragmentManager = getFragmentManager();
+	private FragmentManager _fragmentManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +105,9 @@ public class MainActivity extends FragmentActivity {
 		 **/
 		String chart = getResources().getStringArray(R.array.drawer_array)[position];
 		Log.i(TAG, chart);
+		
+		_fragmentManager = getFragmentManager();
+		
 		if (position == 0) {
 			if (_fragment1 == null) {
 				_fragment1 = new TransactionFragment();

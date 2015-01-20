@@ -82,12 +82,10 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 	@Override
 	public void onDetach() {
 		super.onDetach();
-		_plot1.clear();
-		_plot1 = null;
 		Log.i(TAG, "on detach");
 	}
 
-	private void plotTransaction(Cursor cursor) {
+	private void updateTransaction(Cursor cursor) {
 		_plot1 = (XYPlot) getView().findViewById(R.id.chart);
 		_plot1.clear();
 
@@ -105,7 +103,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 		}
 
 		_series = new SimpleXYSeries(Arrays.asList(time), Arrays.asList(y), "Transactions");
-
+		
 		LineAndPointFormatter seriesFormat = new LineAndPointFormatter();
 		seriesFormat.setPointLabelFormatter(new PointLabelFormatter());
 		seriesFormat.configure(getActivity().getApplicationContext(), R.xml.line_point_formatter);
@@ -190,7 +188,7 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 		 * Moves the query results into the adapter, causing the ListView fronting this adapter to re-display
 		 */
 		if (returnCursor != null)
-			plotTransaction(returnCursor);
+			updateTransaction(returnCursor);
 
 		// mAdapter.changeCursor(returnCursor);
 	}

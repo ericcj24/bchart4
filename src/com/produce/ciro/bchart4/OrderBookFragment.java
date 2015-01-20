@@ -38,6 +38,7 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	private XYSeries _series2;
 	
 	private static final NumberFormat _formatter = new DecimalFormat("#0.00");
+	
 
 	public OrderBookFragment() {
 		// Empty constructor required for fragment subclasses
@@ -84,8 +85,6 @@ public class OrderBookFragment extends Fragment implements LoaderManager.LoaderC
 	@Override
 	public void onDetach() {
 		super.onDetach();
-		_plot1.clear();
-		_plot1 = null;
 		Log.i(TAG, "on detach");
 	}
 
