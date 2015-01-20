@@ -16,7 +16,7 @@ public final class TransactionProviderContract implements BaseColumns {
 	public static final String SCHEME = "content";
 
 	// The provider's authority
-	public static final String AUTHORITY = "edu.illinois.jchen93.bchart4.transaction";
+	public static final String AUTHORITY = "com.produce.ciro.bchart4.transaction";
 
 	/**
 	 * The MIME type for a content URI that would return multiple rows
@@ -24,7 +24,7 @@ public final class TransactionProviderContract implements BaseColumns {
 	 * Type: TEXT
 	 * </P>
 	 */
-	public static final String MIME_TYPE_ROWS = "vnd.android.cursor.dir/vnd.edu.illinois.jchen93.bchart4";
+	public static final String MIME_TYPE_ROWS = "vnd.android.cursor.dir/vnd.com.produce.ciro.bchart4";
 
 	/**
 	 * The MIME type for a content URI that would return a single row
@@ -33,7 +33,7 @@ public final class TransactionProviderContract implements BaseColumns {
 	 * </P>
 	 * 
 	 */
-	public static final String MIME_TYPE_SINGLE_ROW = "vnd.android.cursor.item/vnd.edu.illinois.jchen93.bchart4";
+	public static final String MIME_TYPE_SINGLE_ROW = "vnd.android.cursor.item/vnd.com.produce.ciro.bchart4";
 
 	/**
 	 * The DataProvider content URI

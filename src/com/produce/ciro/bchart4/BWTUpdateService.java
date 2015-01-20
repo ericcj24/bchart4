@@ -67,5 +67,4 @@ public class BWTUpdateService extends Service{
 		return null;
 	}
 	
-
 }

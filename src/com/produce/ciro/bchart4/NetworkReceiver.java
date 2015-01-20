@@ -29,7 +29,6 @@ public class NetworkReceiver extends BroadcastReceiver {
 			int duration = Toast.LENGTH_LONG;
 			Toast toast = Toast.makeText(context, text, duration);
 			toast.show();
-
 		}
 	}
 }
