@@ -3,7 +3,7 @@ package com.produce.ciro.bchart4;
 public class Trade{
 	private String price;
 	private String amount;
-	private int id;
+	private String id;
 	public Trade(){}
 	public String getPrice(){
 		return price;
@@ -11,7 +11,7 @@ public class Trade{
 	public String getAmount(){
 		return amount;
 	}
-	public int getId(){
+	public String getId(){
 		return id;
 	}
 }

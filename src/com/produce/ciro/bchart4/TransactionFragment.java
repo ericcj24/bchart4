@@ -35,7 +35,9 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 	
 	private XYPlot _plot1;
 	
-	private XYSeries _series;
+	private SimpleXYSeries _series;
+	
+	private long _tempID;
 
 	public TransactionFragment() {
 		// Empty constructor required for fragment subclasses
@@ -69,6 +71,8 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 	@Override
 	public void onResume() {
 		super.onResume();
+		_tempID = 0;
+		_plot1 = (XYPlot) getView().findViewById(R.id.chart);
 		Log.i(TAG, "on resume");
 	}
 
@@ -81,71 +85,91 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 
 	@Override
 	public void onDetach() {
+		_tempID = 0;
+		_series = null;
+		_plot1.clear();
+		_plot1 = null;
 		super.onDetach();
 		Log.i(TAG, "on detach");
 	}
 
 	private void updateTransaction(Cursor cursor) {
-		_plot1 = (XYPlot) getView().findViewById(R.id.chart);
-		_plot1.clear();
-
-		int n = cursor.getCount();
-		Log.i(TAG, "ploting transaction size is: " + n);
-		Number[] time = new Number[n];
-		Number[] y = new Number[n];
-		int i = 0;
-		cursor.moveToFirst();
-		while (cursor.isAfterLast() == false) {
-			time[i] = Long.parseLong(cursor.getString(cursor.getColumnIndex(TransactionProviderContract.TRANSACTION_DATE_COLUMN)));
-			y[i] = Double.parseDouble(cursor.getString(cursor.getColumnIndex(TransactionProviderContract.TRANSACTION_PRICE_COLUMN)));
-			i++;
-			cursor.moveToNext();
-		}
-
-		_series = new SimpleXYSeries(Arrays.asList(time), Arrays.asList(y), "Transactions");
 		
-		LineAndPointFormatter seriesFormat = new LineAndPointFormatter();
-		seriesFormat.setPointLabelFormatter(new PointLabelFormatter());
-		seriesFormat.configure(getActivity().getApplicationContext(), R.xml.line_point_formatter);
-		seriesFormat.setPointLabeler(new PointLabeler() {
-			@Override
-			public String getLabel(XYSeries series, int index) {
-				return index % 10 == 0 ? series.getY(index) + "" : "";
+		//_plot1.clear();
+
+		if (_tempID == 0) {
+			int n = cursor.getCount();
+			Log.i(TAG, "first time ploting transaction size is: " + n);
+			Number[] time = new Number[n];
+			Number[] y = new Number[n];
+			int i = 0;
+			cursor.moveToFirst();
+			
+			_tempID = cursor.getLong(cursor.getColumnIndex(TransactionProviderContract.TRANSACTION_TID_COLUMN));
+			
+			while (cursor.isAfterLast() == false) {
+				time[i] = Long.parseLong(cursor.getString(cursor.getColumnIndex(TransactionProviderContract.TRANSACTION_DATE_COLUMN)));
+				y[i] = Double.parseDouble(cursor.getString(cursor.getColumnIndex(TransactionProviderContract.TRANSACTION_PRICE_COLUMN)));
+				i++;
+				cursor.moveToNext();
 			}
-		});
-		_plot1.addSeries(_series, seriesFormat);
-
-		// reduce the number of range labels
-		_plot1.setTicksPerRangeLabel(3);
-		_plot1.getGraphWidget().setDomainLabelOrientation(-45);
-
-		// customize our domain/range labels
-		_plot1.setDomainLabel("Time");
-		_plot1.setRangeLabel("Price");
-
-		_plot1.setDomainValueFormat(new Format() {
-
-			// create a simple date format that draws on the year portion of our timestamp.
-			// see http://download.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
-			// for a full description of SimpleDateFormat.
-			private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-
-			@Override
-			public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
-
-				// because our timestamps are in seconds and SimpleDateFormat expects milliseconds
-				// we multiply our timestamp by 1000:
-				long timestamp = ((Number) obj).longValue() * 1000;
-				Date date = new Date(timestamp);
-				return dateFormat.format(date, toAppendTo, pos);
+	
+			_series = new SimpleXYSeries(Arrays.asList(time), Arrays.asList(y), "Transactions");
+			LineAndPointFormatter seriesFormat = new LineAndPointFormatter();
+			seriesFormat.setPointLabelFormatter(new PointLabelFormatter());
+			seriesFormat.configure(getActivity().getApplicationContext(), R.xml.line_point_formatter);
+			seriesFormat.setPointLabeler(new PointLabeler() {
+				@Override
+				public String getLabel(XYSeries series, int index) {
+					return index % 10 == 0 ? series.getY(index) + "" : "";
+				}
+			});
+			_plot1.addSeries(_series, seriesFormat);
+	
+			// reduce the number of range labels
+			_plot1.setTicksPerRangeLabel(3);
+			_plot1.getGraphWidget().setDomainLabelOrientation(-45);
+	
+			// customize our domain/range labels
+			_plot1.setDomainLabel("Time");
+			_plot1.setRangeLabel("Price");
+	
+			_plot1.setDomainValueFormat(new Format() {
+	
+				// create a simple date format that draws on the year portion of our timestamp.
+				// see http://download.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
+				// for a full description of SimpleDateFormat.
+				private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+	
+				@Override
+				public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
+	
+					// because our timestamps are in seconds and SimpleDateFormat expects milliseconds
+					// we multiply our timestamp by 1000:
+					long timestamp = ((Number) obj).longValue() * 1000;
+					Date date = new Date(timestamp);
+					return dateFormat.format(date, toAppendTo, pos);
+				}
+	
+				@Override
+				public Object parseObject(String source, ParsePosition pos) {
+					return null;
+	
+				}
+			});
+		} else {
+			cursor.moveToFirst();
+			long temp = cursor.getLong(cursor.getColumnIndex(TransactionProviderContract.TRANSACTION_TID_COLUMN));
+			while (temp > _tempID){
+				temp = _tempID;
+				long x = Long.parseLong(cursor.getString(cursor.getColumnIndex(TransactionProviderContract.TRANSACTION_DATE_COLUMN)));
+				double y = Double.parseDouble(cursor.getString(cursor.getColumnIndex(TransactionProviderContract.TRANSACTION_PRICE_COLUMN)));
+				_series.addFirst(x, y);
+				cursor.moveToNext();
 			}
-
-			@Override
-			public Object parseObject(String source, ParsePosition pos) {
-				return null;
-
-			}
-		});
+			Log.i(TAG, "ploting transaction size is: " + _series.size());
+		}
+		
 
 		_plot1.redraw();
 		_plot1.setVisibility(1);
@@ -165,17 +189,21 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 			case TRANSACTION_LOADER:
 				// Returns a new CursorLoader
 				String[] projection = { TransactionProviderContract.TRANSACTION_DATE_COLUMN,
-				        TransactionProviderContract.TRANSACTION_TID_COLUMN, TransactionProviderContract.TRANSACTION_PRICE_COLUMN,
+				        TransactionProviderContract.TRANSACTION_TID_COLUMN, 
+				        TransactionProviderContract.TRANSACTION_PRICE_COLUMN,
 				        TransactionProviderContract.TRANSACTION_AMOUNT_COLUMN };
+				String selection = TransactionProviderContract.TRANSACTION_TID_COLUMN + " > " + _tempID;
+				Log.i(TAG, "query for TID greater than: " + _tempID);
 				String sortOrder = TransactionProviderContract.TRANSACTION_TID_COLUMN + " DESC" + " LIMIT " + 800;
 				return new CursorLoader(getActivity(), // Parent activity context
 				        TransactionProviderContract.TRANSACTIONURL_TABLE_CONTENTURI, // Table to query
 				        projection, // Projection to return
-				        null, // No selection clause
+				        selection, // No selection clause
 				        null, // No selection arguments
 				        sortOrder // Default sort order
 				);
 			default:
+				Log.e(TAG, "invalid id passed in");
 				// An invalid id was passed in
 				return null;
 		}
@@ -183,7 +211,6 @@ public class TransactionFragment extends Fragment implements LoaderManager.Loade
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor returnCursor) {
-
 		/*
 		 * Moves the query results into the adapter, causing the ListView fronting this adapter to re-display
 		 */
